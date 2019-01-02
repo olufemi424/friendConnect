@@ -16,8 +16,8 @@ const UserShcema = new Schema({
     required: true
   },
   avatar: {
-    type: String,
-    required: true
+    type: String
+    // required: true
   },
   date: {
     type: Date,
@@ -25,4 +25,4 @@ const UserShcema = new Schema({
   }
 });
 
-module, (exports = Users = mongoose.model("users", UserShcema));
+module.exports = Users = mongoose.model("users", UserShcema);
