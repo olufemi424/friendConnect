@@ -1,2 +1,0 @@
-# friendConnect
-friends keep connect
