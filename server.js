@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 // bring in resources
-const users = require("./routes/api/users");
+const users = require("./routes/api/users"); // /register && /login
 const profile = require("./routes/api/profile");
 const posts = require("./routes/api/posts");
 
