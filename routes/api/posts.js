@@ -149,4 +149,89 @@ router.post(
   }
 );
 
+//@route POST api/posts/comment:id
+//@des Unlike post
+//@access Private
+router.post(
+  "/comment/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const { errors, isValid } = validatePostInput(req.body);
+    //Check Validation
+    if (!isValid) {
+      //IF any errors, send 400 with errors
+      return res.status(400).json(errors);
+    }
+    Post.findById(req.params.id).then(post => {
+      const newComment = new Post({
+        text: req.body.text,
+        name: req.body.name,
+        avatar: req.body.avatar,
+        user: req.user.id
+      });
+
+      //add comments to array
+      post.comments.unshift(newComment);
+      //save
+      post
+        .save()
+        .then(post => res.json(post))
+        .catch(err =>
+          res
+            .status(404)
+            .json({ commentCantAdd: "Comment cant be added at this time" })
+        );
+    });
+  }
+);
+
+//@route DELETE api/posts/comment/:id/:comment_id
+//@des DELETE post
+//@access Private
+router.delete(
+  "/comment/:id/:comment_id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Post.findById(req.params.id).then(post => {
+      //check for comments
+      if (
+        post.comments.filter(
+          comment => comment._id.toString() === req.params.comment_id
+        ).length === 0
+      ) {
+        return res
+          .status(404)
+          .json({ commentNotExit: "Comment does not exist" });
+      }
+
+      //get remove index
+      const removeIndex = post.comments
+        .map(item => item._id.toString())
+        .indexOf(req.params.comment_id);
+      //splice out of array
+      post.comments.splice(removeIndex, 1);
+      //save
+      post
+        .save()
+        .then(post => res.json(post))
+        .catch(err => res.status(404).json({ noPostFound: "No Post Found" }));
+    });
+  }
+);
+
 module.exports = router;
+
+//ROUTES FOR ACTIONS
+//@route GET api/posts/test
+//@route GET api/posts/  //auth:false
+//@route GET api/posts/:id //auth:false
+
+//@route DELETE api/posts/:id auth:true
+//@route DELETE api/posts/:id/comment:id
+
+//@route DELETE api/posts/:id/comment:id
+//@route DELETE api/posts/comment/:id/:comment_id
+
+//@route POST api/posts/ auth:true
+//@route POST api/posts/like:id auth:true
+//@route POST api/posts/unlike:id auth: true
