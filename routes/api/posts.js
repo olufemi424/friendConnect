@@ -227,11 +227,9 @@ module.exports = router;
 //@route GET api/posts/:id //auth:false
 
 //@route DELETE api/posts/:id auth:true
-//@route DELETE api/posts/:id/comment:id
-
-//@route DELETE api/posts/:id/comment:id
-//@route DELETE api/posts/comment/:id/:comment_id
+//@route DELETE api/posts/comment/:id/:comment_id auth:true
 
 //@route POST api/posts/ auth:true
 //@route POST api/posts/like:id auth:true
 //@route POST api/posts/unlike:id auth: true
+//@route POST api/posts/comment:id auth: true
