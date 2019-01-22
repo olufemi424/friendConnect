@@ -5,7 +5,7 @@ import store from "./store/store";
 
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import NotFound from "./components/layout/NotFound";
+// import NotFound from "./components/layout/NotFound";
 import Landing from "./components/layout/Landing";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
@@ -20,7 +20,6 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <Route exact path="/" component={Landing} />
-            <Route path="*" component={NotFound} />
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
