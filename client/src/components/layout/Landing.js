@@ -12,7 +12,7 @@ class Landing extends Component {
                 <h1 className="display-3 mb-4">Friend Connect</h1>
                 <p className="lead">
                   {" "}
-                  Create a profile, meet new people and connect.
+                  Create a profile and connect with new people.
                 </p>
                 <hr />
                 <Link to="/register" className="btn btn-lg btn-info mr-2">
