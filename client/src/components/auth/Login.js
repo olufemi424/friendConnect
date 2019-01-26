@@ -23,6 +23,12 @@ class Login extends Component {
     }
   }
 
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
   hanleSubmit = e => {
     e.preventDefault();
     const userData = {
