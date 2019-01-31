@@ -17,7 +17,7 @@ class Landing extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">Friend Connect</h1>
+                <h1 className="display-3 mb-4">FriendConnect</h1>
                 <p className="lead">
                   {" "}
                   Create a profile and connect with new people.

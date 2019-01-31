@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logOutUser } from "../../store/actions/authActions";
+import { clearCurrentProfile } from "../../store/actions/profileActions";
 
 class Navbar extends Component {
   onLogOutClick = e => {
     e.preventDefault();
-    this.props.logOutUser();
+    this.props.clearCurrentProfile();
+    this.props.logOutUser(this.props.history);
   };
   render() {
     const { isAuthenticated, user } = this.props.auth;
@@ -15,7 +18,7 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <a href="#nothing" onClick={this.onLogOutClick.bind(this)}>
+          <a href="#nothing" onClick={this.onLogOutClick}>
             <img
               className="rounded-circle"
               src={user.avatar}
@@ -88,11 +91,12 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    logOutUser: () => dispatch(logOutUser())
+    logOutUser: history => dispatch(logOutUser(history)),
+    clearCurrentProfile: () => dispatch(clearCurrentProfile())
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Navbar);
+)(withRouter(Navbar));
