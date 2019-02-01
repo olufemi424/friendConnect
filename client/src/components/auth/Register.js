@@ -35,7 +35,7 @@ class Register extends Component {
     });
   };
 
-  hanleSubmit = e => {
+  handleSubmit = e => {
     e.preventDefault();
     const newUser = {
       name: this.state.name,
@@ -57,7 +57,7 @@ class Register extends Component {
               <p className="lead text-center">
                 Create your FriendConnect account
               </p>
-              <form noValidate onSubmit={this.hanleSubmit}>
+              <form noValidate onSubmit={this.handleSubmit}>
                 <TextFieldGroup
                   placeholder="Name"
                   name="name"
