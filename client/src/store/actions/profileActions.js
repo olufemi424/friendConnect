@@ -14,7 +14,7 @@ export const getCurrentProfile = () => dispatch => {
     .then(res =>
       dispatch({
         type: GET_PROFILE,
-        payload: { olu: "olu" }
+        payload: res.data
       })
     )
     .catch(err =>
@@ -33,9 +33,9 @@ export const setProfileLoading = () => {
 };
 
 //clear profile
-export const clearCurrentProfile = () => dispatch => {
-  dispatch({
+export const clearCurrentProfile = () => {
+  return {
     type: CLEAR_CURRENT_PROFILE,
     payload: null
-  });
+  };
 };
