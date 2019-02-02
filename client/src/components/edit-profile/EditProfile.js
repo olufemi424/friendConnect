@@ -6,9 +6,13 @@ import TextAreaFieldGroup from "../../common/TextAreaFieldGroup";
 import TextFieldGroup from "../../common/TextFieldGroup";
 import InputGroup from "../../common/InputGroup";
 import SelectListGroup from "../../common/SelectListGroup";
-import { createProfile } from "../../store/actions/profileActions";
+import {
+  createProfile,
+  getCurrentProfile
+} from "../../store/actions/profileActions";
+import isEmpty from "../../store/validation/is-Empty";
 
-class CreateProfile extends Component {
+class EditProfile extends Component {
   state = {
     dispplaySocialInputs: false,
     handle: "",
@@ -27,10 +31,63 @@ class CreateProfile extends Component {
     errors: {}
   };
 
+  componentDidMount() {
+    this.props.getCurrentProfile();
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({
         errors: nextProps.errors
+      });
+    }
+
+    if (nextProps.profile.profile) {
+      const profile = nextProps.profile.profile;
+
+      //bring skills array back to CSV
+      let skillCSV;
+      if (typeof profile.skills === "object") {
+        skillCSV = profile.skills.join(",");
+      }
+
+      //if profile filed doesnt exist, make empty string
+      profile.company = !isEmpty(profile.company) ? profile.company : "";
+      profile.website = !isEmpty(profile.website) ? profile.website : "";
+      profile.location = !isEmpty(profile.location) ? profile.location : "";
+      profile.skills = !isEmpty(profile.skills) ? skillCSV : "";
+      profile.bio = !isEmpty(profile.bio) ? profile.bio : "";
+      profile.social = !isEmpty(profile.social) ? profile.social : {};
+      profile.twitter = !isEmpty(profile.social.twitter)
+        ? profile.social.twitter
+        : "";
+      profile.facebook = !isEmpty(profile.social.facebook)
+        ? profile.social.facebook
+        : "";
+      profile.linkedin = !isEmpty(profile.social.linkedin)
+        ? profile.social.linkedin
+        : "";
+      profile.youtube = !isEmpty(profile.social.youtube)
+        ? profile.social.youtube
+        : "";
+      profile.instagram = !isEmpty(profile.social.instagram)
+        ? profile.social.instagram
+        : "";
+
+      // set component field state
+      this.setState({
+        handle: profile.handle,
+        company: profile.company,
+        website: profile.website,
+        location: profile.location,
+        status: profile.status,
+        skills: profile.skills,
+        bio: profile.bio,
+        githubusername: profile.githubusername,
+        twitter: profile.twitter,
+        facebook: profile.facebook,
+        linkedin: profile.linkedin,
+        youtube: profile.youtube
       });
     }
   }
@@ -43,22 +100,15 @@ class CreateProfile extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    //get state
     const profileData = {
-      handle: this.state.handle,
-      company: this.state.company,
-      website: this.state.website,
-      location: this.state.location,
-      status: this.state.status,
-      skills: this.state.skills,
-      githubusername: this.state.githubusername,
-      bio: this.state.bio,
-      twitter: this.state.twitter,
-      facebook: this.state.facebook,
-      linkedin: this.state.linkedin,
-      youtube: this.state.youtube,
-      instagram: this.state.instagram
+      ...this.state
     };
+    //history
     const history = this.props.history;
+
+    // let handle = this.state.handle;
+    // const profileHandle = this.props.profile.profile.handle;
     this.props.createProfile(profileData, history);
   };
 
@@ -127,10 +177,7 @@ class CreateProfile extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1>Create your profile</h1>
-              <p className="lead text-center">
-                Let's get some informatiom to make your profile stand out
-              </p>
+              <h1>Edit profile</h1>
               <small className="d-block pb-3 text-success">
                 * = required fields
               </small>
@@ -226,10 +273,11 @@ class CreateProfile extends Component {
   }
 }
 
-CreateProfile.propTypes = {
+EditProfile.propTypes = {
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
-  createProfile: PropTypes.func.isRequired
+  createProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -239,10 +287,11 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   createProfile: (prevState, history) =>
-    dispatch(createProfile(prevState, history))
+    dispatch(createProfile(prevState, history)),
+  getCurrentProfile: () => dispatch(getCurrentProfile())
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(CreateProfile));
+)(withRouter(EditProfile));

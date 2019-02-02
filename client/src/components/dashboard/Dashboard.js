@@ -30,7 +30,6 @@ class Dashboard extends Component {
     } else {
       //check if login user has profile data
       if (Object.keys(profile).length > 0) {
-        console.log(profile.length);
         dashboardContent = (
           <div>
             <p className="lead">
