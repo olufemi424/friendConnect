@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import TextAreaFieldGroup from "../../common/TextAreaFieldGroup";
 import TextFieldGroup from "../../common/TextFieldGroup";
 import InputGroup from "../../common/InputGroup";
 import SelectListGroup from "../../common/SelectListGroup";
+import { createProfile } from "../../store/actions/profileActions";
 
 class CreateProfile extends Component {
   state = {
@@ -25,6 +27,14 @@ class CreateProfile extends Component {
     errors: {}
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
+    }
+  }
+
   handleOnChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -33,6 +43,9 @@ class CreateProfile extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    const profileData = { ...this.state };
+    const history = this.props.history;
+    this.props.createProfile(profileData, history);
   };
 
   render() {
@@ -104,7 +117,9 @@ class CreateProfile extends Component {
               <p className="lead text-center">
                 Let's get some informatiom to make your profile stand out
               </p>
-              <small className="d-block pb-3">* = required fields</small>
+              <small className="d-block pb-3 text-success">
+                * = required fields
+              </small>
               <form onSubmit={this.handleSubmit}>
                 <TextFieldGroup
                   placeholder="* Profile Handle"
@@ -122,6 +137,22 @@ class CreateProfile extends Component {
                   error={errors.status}
                   options={options}
                   info="Give us an idea of where you are at in your career"
+                />
+                <TextFieldGroup
+                  placeholder="Skills"
+                  name="skills"
+                  value={this.state.skills}
+                  onChange={this.handleOnChange}
+                  error={errors.skills}
+                  info="Please use comma separated values (eg. HTML,CSS,JavaScript, PHP"
+                />
+                <TextFieldGroup
+                  placeholder="Github Username"
+                  name="githubusername"
+                  value={this.state.githubusername}
+                  onChange={this.handleOnChange}
+                  error={errors.githubusername}
+                  info="If you want your latest repos and a github link, include your username"
                 />
                 <TextFieldGroup
                   placeholder="Company"
@@ -148,22 +179,7 @@ class CreateProfile extends Component {
                   error={errors.location}
                   info="City or city &amp; state suggested(eg. Chicago, IL)"
                 />
-                <TextFieldGroup
-                  placeholder="Skills"
-                  name="skill"
-                  value={this.state.skills}
-                  onChange={this.handleOnChange}
-                  error={errors.skills}
-                  info="Please use comma separated values (eg. HTML,CSS,JavaScript, PHP"
-                />
-                <TextFieldGroup
-                  placeholder="Github Username"
-                  name="githubusername"
-                  value={this.state.githubusername}
-                  onChange={this.handleOnChange}
-                  error={errors.githubusername}
-                  info="If you want your latest repos and a github link, include your username"
-                />
+
                 <TextAreaFieldGroup
                   placeholder="Short Bio"
                   name="bio"
@@ -174,6 +190,7 @@ class CreateProfile extends Component {
                 />
                 <div className="mb-3">
                   <button
+                    type="button"
                     onClick={() => {
                       this.setState(prevState => ({
                         dispplaySocialInputs: !prevState.dispplaySocialInputs
@@ -197,11 +214,21 @@ class CreateProfile extends Component {
 
 CreateProfile.propTypes = {
   profile: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
+  createProfile: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   profile: state.profile,
   errors: state.errors
 });
-export default connect(mapStateToProps)(CreateProfile);
+
+const mapDispatchToProps = dispatch => ({
+  createProfile: (prevState, history) =>
+    dispatch(createProfile(prevState, history))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(CreateProfile));
