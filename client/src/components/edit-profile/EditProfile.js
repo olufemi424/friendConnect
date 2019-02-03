@@ -125,6 +125,7 @@ class EditProfile extends Component {
             value={this.state.twitter}
             onChange={this.handleOnChange}
             error={errors.twitter}
+            pattern="https?://.+"
           />
           <InputGroup
             placeholder="Facebook Profile URL"
@@ -133,6 +134,7 @@ class EditProfile extends Component {
             value={this.state.facebook}
             onChange={this.handleOnChange}
             error={errors.facebook}
+            pattern="https?://.+"
           />
           <InputGroup
             placeholder="LinkedIn Profile URL"
@@ -141,6 +143,7 @@ class EditProfile extends Component {
             value={this.state.linkedin}
             onChange={this.handleOnChange}
             error={errors.linkedin}
+            pattern="https?://.+"
           />
           <InputGroup
             placeholder="Youtube Profile URL"
@@ -149,6 +152,7 @@ class EditProfile extends Component {
             value={this.state.youtube}
             onChange={this.handleOnChange}
             error={errors.youtube}
+            pattern="https?://.+"
           />
           <InputGroup
             placeholder="Instagram Profile URL"
@@ -157,6 +161,7 @@ class EditProfile extends Component {
             value={this.state.instagram}
             onChange={this.handleOnChange}
             error={errors.instagram}
+            pattern="https?://.+"
           />
         </div>
       );
@@ -259,7 +264,11 @@ class EditProfile extends Component {
                     }}
                     className="btn btn-light"
                   >
-                    Add Social Network Links
+                    Add Social Network Links{" "}
+                    <i
+                      className="fa fa-chevron-down text-info"
+                      aria-hidden="true"
+                    />
                   </button>
                 </div>
                 {socialInputs}
