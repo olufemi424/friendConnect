@@ -3,7 +3,7 @@ import setAuthToekn from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import { GET_ERRORS, SET_CURRENT_USER } from "./types";
 
-// Register User
+// REGISTER USER
 export const registerUser = (userData, history) => dispatch => {
   //POST NEW USER
   axios
@@ -12,23 +12,25 @@ export const registerUser = (userData, history) => dispatch => {
     .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }));
 };
 
-//Login - Get user Token
+//LOGIN - GET USER AUTHENTICATION
 export const loginUser = userData => dispatch => {
   axios
     .post("/api/users/login", userData)
     .then(res => {
-      //save to local storage
+      // GET TOKEN FROM RESPONSE
       const { token } = res.data;
-      //set token to local storage
+      //SET TOKEN TO LOCAL STORAGE
       localStorage.setItem("jwtToken", token);
-      //set token to auth header
+      //SET TOKEN TO AUTH HEADER
       setAuthToekn(token);
-      //decode token to get use data
+      //DECODE TOKEN TO GET USER DATA
       const decoded = jwt_decode(token);
-      //set current user
+      //SET CURRENT USER
       dispatch(setCurrentUser(decoded));
     })
-    .catch(err =>
+    .catch((
+      err //CATCH ERROR
+    ) =>
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
@@ -36,7 +38,7 @@ export const loginUser = userData => dispatch => {
     );
 };
 
-//set Loggedin user
+//SET LOGGEDIN USER TO CURRENT USER IN STORE
 export const setCurrentUser = decoded => {
   return {
     type: SET_CURRENT_USER,
@@ -44,16 +46,17 @@ export const setCurrentUser = decoded => {
   };
 };
 
-//log user out
+//LOGOUT USER
 
 export const logOutUser = history => dispatch => {
-  //Remove token from local storage
+  //REMOVE TOKEN FROM LOCAL STORAGE
   localStorage.removeItem("jwtToken");
-  //Remove auth header for future request
+  //REMOVE AUTH HEADER FROM FUTURE REQUEST
   setAuthToekn(false);
 
-  //route to dashboard
-  history.push("/");
-  //set current user to {} which will set isAuthenticaed to false
+  //ROUTE TO HOME - not necessary
+  // history.push("/");
+
+  //SET CURRENT USER TO EMPTY OBJECT IN STORE - which will set isAuthenticated to fale
   dispatch(setCurrentUser({}));
 };

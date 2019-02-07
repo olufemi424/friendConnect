@@ -5,12 +5,14 @@ import {
   CLEAR_CURRENT_PROFILE
 } from "../actions/types";
 
+//INITIAL PROFILE STATE STORE
 const initialState = {
   profile: null,
   profiles: null,
   loading: false
 };
 
+//SWITCH CASES TESTING FOR ACTIONS TYPES TO UPDATE THE STORE
 export default function(state = initialState, action) {
   switch (action.type) {
     case PROFILE_LOADING:

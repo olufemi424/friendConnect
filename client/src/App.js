@@ -23,23 +23,23 @@ import AddEducation from "./components/add-credentials/AddEducation";
 
 import "./App.css";
 
-//check for token
+//ON LOAD OF THE APP, CHECK FOR AUTHENTICATION
 if (localStorage.jwtToken) {
-  //set auth token header auth
+  //SET AUTH TOKEN TO HEADER AUTH
   setAuthToken(localStorage.jwtToken);
-  //decode toekn and get user info and exp
+  //DECODE TOKEN AND GET USER INFO AND EXPIRATION
   const decoded = jwt_decode(localStorage.jwtToken);
-  //set user and isAuthenticated
+  //SET USER AND isAuthenticated
   store.dispatch(setCurrentUser(decoded));
 
-  //check for expired token
+  //CHECK FOR EXPIRED TOKEN AND REDIRECT TO LOGIN IF EXPIRED
   const currentTime = Date.now() / 1000;
   if (decoded.exp < currentTime) {
-    //logout user
+    //LOG USER OUT
     store.dispatch(logOutUser());
-    //clear current profile
+    //CLEAR CURRENT PROFILE
     store.dispatch(clearCurrentProfile());
-    //redirect to login
+    //REDIRECT TO LOGIN
     window.location.href = "/login";
   }
 }
@@ -57,30 +57,25 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              </Switch>
 
-              <Switch>
                 <PrivateRoute
                   exact
                   path="/create-profile"
                   component={CreateProfile}
                 />
-              </Switch>
-              <Switch>
+
                 <PrivateRoute
                   exact
                   path="/edit-profile"
                   component={EditProfile}
                 />
-              </Switch>
-              <Switch>
+
                 <PrivateRoute
                   exact
                   path="/add-experience"
                   component={AddExperience}
                 />
-              </Switch>
-              <Switch>
+
                 <PrivateRoute
                   exact
                   path="/add-education"

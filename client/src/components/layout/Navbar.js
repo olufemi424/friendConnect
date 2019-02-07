@@ -7,6 +7,7 @@ import { logOutUser } from "../../store/actions/authActions";
 import { clearCurrentProfile } from "../../store/actions/profileActions";
 
 class Navbar extends Component {
+  //LOGOUT CLICK CALL
   onLogOutClick = e => {
     e.preventDefault();
     this.props.clearCurrentProfile();
@@ -15,6 +16,7 @@ class Navbar extends Component {
   render() {
     const { isAuthenticated, user } = this.props.auth;
 
+    //IS AUNTHNENTICATED NAV LINKS
     const authLinks = (
       <ul className="navbar-nav">
         <li className="nav-item">
@@ -40,6 +42,7 @@ class Navbar extends Component {
       </ul>
     );
 
+    //NOT AUTHENTICATED NAV LINKS
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">

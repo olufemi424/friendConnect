@@ -1,3 +1,4 @@
+//CHECK IF VALUE IS EMPTY AND RETURN A BOOLEAN VALUE  {TRUE/FALSE}
 const isEmpty = value =>
   value === undefined ||
   value === null ||
