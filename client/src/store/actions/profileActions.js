@@ -7,7 +7,7 @@ import {
   SET_CURRENT_USER
 } from "./types";
 
-//gett current profile
+//GET CURRENT PROFILE
 export const getCurrentProfile = () => dispatch => {
   dispatch(setProfileLoading());
   axios
@@ -26,7 +26,7 @@ export const getCurrentProfile = () => dispatch => {
     );
 };
 
-//create profile
+//CREATE NEW PROFILE
 export const createProfile = (profileData, history) => dispatch => {
   axios
     .post("/api/profile", profileData)
@@ -39,7 +39,7 @@ export const createProfile = (profileData, history) => dispatch => {
     );
 };
 
-//Delete account & profile
+//DELETE ACCOUNT AND PROFILE
 export const deleteAccount = () => dispatch => {
   if (window.confirm("Are You sure? This can NOT be undone!")) {
     axios
@@ -54,14 +54,14 @@ export const deleteAccount = () => dispatch => {
   }
 };
 
-//profile loading
+// LOADING SPINNER
 export const setProfileLoading = () => {
   return {
     type: PROFILE_LOADING
   };
 };
 
-//clear profile
+//CLEAR CURRENT PROFILE FUNCTION // WHEN LOGOUT
 export const clearCurrentProfile = () => {
   return {
     type: CLEAR_CURRENT_PROFILE,
