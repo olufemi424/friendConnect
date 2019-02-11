@@ -10,7 +10,6 @@ class Education extends Component {
   };
 
   render() {
-    console.log(this.props.education);
     const education = this.props.education.map(edu => (
       <tr key={edu._id}>
         <td>{edu.school}</td>
