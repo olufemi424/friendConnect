@@ -10,6 +10,7 @@ class Education extends Component {
   };
 
   render() {
+    console.log(this.props.education);
     const education = this.props.education.map(edu => (
       <tr key={edu._id}>
         <td>{edu.school}</td>
@@ -39,8 +40,8 @@ class Education extends Component {
         <table className="table">
           <tbody>
             <tr>
-              <th>Company</th>
-              <th>Title</th>
+              <th>School</th>
+              <th>Degree</th>
               <th>Years</th>
               <th />
             </tr>

@@ -41,8 +41,8 @@ class Experience extends Component {
         <table className="table">
           <tbody>
             <tr>
-              <th>School</th>
-              <th>Degree</th>
+              <th>Company</th>
+              <th>Title</th>
               <th>Years</th>
               <th />
             </tr>
