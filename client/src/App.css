@@ -41,3 +41,7 @@ img {
 hr {
   width: 200px;
 }
+
+.btn {
+  cursor: pointer !important;
+}
