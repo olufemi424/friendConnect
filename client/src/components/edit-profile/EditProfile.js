@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import TextAreaFieldGroup from "../../common/TextAreaFieldGroup";
@@ -182,7 +182,10 @@ class EditProfile extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1>Edit profile</h1>
+              <Link to="/dashboard" className="btn btn-light mb-3">
+                Go Back
+              </Link>
+              <h1 className="text-center display-4">Edit profile</h1>
               <small className="d-block pb-3 text-success">
                 * = required fields
               </small>

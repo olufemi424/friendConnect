@@ -2,32 +2,30 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Moment from "react-moment";
-import { deleteExperience } from "../../store/actions/profileActions";
+import { deleteEducation } from "../../store/actions/profileActions";
 
-class Experience extends Component {
+class Education extends Component {
   handleClick = id => {
     if (window.confirm("Are You Sure ?")) this.props.deleteEducation(id);
-
-    this.props.deleteExperience(id);
   };
 
   render() {
-    const experience = this.props.experience.map(exp => (
-      <tr key={exp._id}>
-        <td>{exp.company}</td>
-        <td>{exp.title}</td>
+    const education = this.props.education.map(edu => (
+      <tr key={edu._id}>
+        <td>{edu.school}</td>
+        <td>{edu.degree}</td>
         <td>
-          <Moment format="YYYY/MM/DD">{exp.from}</Moment> -{" "}
-          {exp.to === null ? (
+          <Moment format="YYYY/MM/DD">{edu.from}</Moment> -{" "}
+          {edu.to === null ? (
             "Now"
           ) : (
-            <Moment format="YYYY/MM/DD">{exp.to}</Moment>
+            <Moment format="YYYY/MM/DD">{edu.to}</Moment>
           )}
         </td>
         <td>
           {" "}
           <button
-            onClick={this.handleClick.bind(this, exp._id)}
+            onClick={this.handleClick.bind(this, edu._id)}
             className="btn btn-danger"
           >
             &times;
@@ -37,16 +35,16 @@ class Experience extends Component {
     ));
     return (
       <div>
-        <h4 className="mb-4">Experience Credentials</h4>
+        <h4 className="mb-4">Education Credentials</h4>
         <table className="table">
           <tbody>
             <tr>
-              <th>School</th>
-              <th>Degree</th>
+              <th>Company</th>
+              <th>Title</th>
               <th>Years</th>
               <th />
             </tr>
-            {experience}
+            {education}
           </tbody>
         </table>
       </div>
@@ -54,11 +52,11 @@ class Experience extends Component {
   }
 }
 
-Experience.protoType = {
-  deleteEducation: PropTypes.func.isRequired
+Education.protoType = {
+  deleteExperience: PropTypes.func.isRequired
 };
 
 export default connect(
   null,
-  { deleteExperience }
-)(Experience);
+  { deleteEducation }
+)(Education);
