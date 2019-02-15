@@ -61,8 +61,8 @@ class PostForm extends Component {
 }
 
 PostForm.propTypes = {
-  addPost: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired
+  addPost: PropTypes.func.isRequired
+  // errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

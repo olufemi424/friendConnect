@@ -12,7 +12,7 @@ import PrivateRoute from "../src/common/PrivateRoute";
 
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-// import NotFound from "./components/layout/NotFound";
+// import PageNotFound from "./components/layout/PageNotFound";
 import Landing from "./components/layout/Landing";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
@@ -54,6 +54,9 @@ class App extends Component {
         <Router>
           <div className="App">
             <Navbar />
+
+            {/* <Route component={PageNotFound} /> */}
+
             <Route exact path="/" component={Landing} />
             <div className="container">
               <Route exact path="/register" component={Register} />
@@ -62,7 +65,6 @@ class App extends Component {
               <Route exact path="/profile/:handle" component={Profile} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
-
                 <PrivateRoute
                   exact
                   path="/create-profile"
