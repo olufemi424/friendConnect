@@ -4,6 +4,7 @@ import {
   ADD_POST,
   GET_ERRORS,
   GET_POSTS,
+  GET_POST,
   POST_LOADING,
   DELETE_POST
 } from "./types";
@@ -28,7 +29,7 @@ export const addPost = postData => dispatch => {
 };
 
 // GET ALL POST
-export const getPost = (load = true) => dispatch => {
+export const getPosts = (load = true) => dispatch => {
   if (load) {
     dispatch(setPostLoading());
   }
@@ -62,6 +63,25 @@ export const deletePost = id => dispatch => {
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
+      })
+    );
+};
+
+// GET POST
+export const getPost = id => dispatch => {
+  dispatch(setPostLoading());
+  axios
+    .get(`/api/posts/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_POST,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_POSTS,
+        payload: null
       })
     );
 };
