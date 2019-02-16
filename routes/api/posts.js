@@ -165,8 +165,8 @@ router.post(
     Post.findById(req.params.id).then(post => {
       const newComment = new Post({
         text: req.body.text,
-        name: req.body.name,
-        avatar: req.body.avatar,
+        name: req.user.name,
+        avatar: req.user.avatar,
         user: req.user.id
       });
 
