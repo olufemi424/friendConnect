@@ -17,11 +17,11 @@ class Profile extends Component {
     }
   }
 
-  componentWillReceiveProps() {
-    if (this.props.profile.profile === null && this.props.profile.loading) {
-      this.props.history.push("/not-found");
-    }
-  }
+  // componentWillReceiveProps() {
+  //   if (this.props.profile.profile === null && this.props.profile.loading) {
+  //     this.props.history.push("/not-found");
+  //   }
+  // }
 
   render() {
     const { profile, loading } = this.props.profile;

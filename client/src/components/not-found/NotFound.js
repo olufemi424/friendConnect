@@ -6,8 +6,8 @@ export default function NotFound() {
     <div>
       <h1 className="display-4 justify-content-center">Page Not Found</h1>
       <p>Sorry, this page does not exist</p>
-      <Link to="/" className="btn btn-info">
-        Go Back Home
+      <Link to="/profiles" className="btn btn-info">
+        Go Back To Profiles
       </Link>
     </div>
   );

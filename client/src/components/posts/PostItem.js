@@ -40,13 +40,11 @@ class PostItem extends Component {
       <div className="card card-body mb-3">
         <div className="row">
           <div className="col-md-2">
-            <a href="profile.html">
-              <img
-                className="rounded-circle d-none d-md-block"
-                src={post.avatar}
-                alt=""
-              />
-            </a>
+            <img
+              className="rounded-circle d-none d-md-block"
+              src={post.avatar}
+              alt=""
+            />
             <br />
             <p className="text-center">{post.name}</p>
           </div>
@@ -111,11 +109,11 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-const mapDispatchToProps = dispatch => ({
-  deletePost: id => dispatch(deletePost(id)),
-  addLike: id => dispatch(addLike(id)),
-  removeLike: id => dispatch(removeLike(id))
-});
+const mapDispatchToProps = {
+  deletePost,
+  addLike,
+  removeLike
+};
 
 export default connect(
   mapStateToProps,
