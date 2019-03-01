@@ -24,9 +24,8 @@ class CommentForm extends Component {
   };
 
   handleSubmit = e => {
-    const postId = this.props.match.params.id;
-
     e.preventDefault();
+    const { postId } = this.props;
     const newComment = {
       text: this.state.text
     };
@@ -64,9 +63,9 @@ class CommentForm extends Component {
 }
 
 CommentForm.propTypes = {
-  auth: PropTypes.object.isRequired,
+  // auth: PropTypes.object.isRequired,
   addComment: PropTypes.func.isRequired,
-  postId: PropTypes.string.isRequired,
+  // postId: PropTypes.string.isRequired,
   errors: PropTypes.object.isRequired
 };
 
