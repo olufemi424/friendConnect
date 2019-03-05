@@ -1,0 +1,74 @@
+.header {
+  background-color: #fff;
+  border-bottom: 1px solid rgb(171, 171, 171);
+  font-size: 1.4rem;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 7rem;
+  padding: 0 2rem;
+  overflow: hidden;
+  font-family: "Montserrat", sans-serif;
+}
+
+.logo {
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1b450d;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  margin-right: 2rem;
+  font-family: "Montserrat", sans-serif;
+
+  &:hover {
+    background-color: #222;
+  }
+}
+
+.user-nav {
+  &--box {
+    font-size: 1.6rem;
+    list-style: none;
+    display: flex;
+    margin-bottom: -0.5rem;
+  }
+
+  &__item {
+    display: flex;
+    align-self: stretch;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+
+    &:hover {
+      background-color: #222;
+    }
+  }
+
+  &__link:link,
+  &__link:visited {
+    text-decoration: none;
+    text-transform: lowercase;
+    padding: 1.3rem 1rem;
+    position: relative;
+    color: #777;
+    align-self: center;
+  }
+
+  &--call {
+    margin-right: auto;
+    align-self: stretch;
+  }
+
+  &__photo {
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 50%;
+  }
+}

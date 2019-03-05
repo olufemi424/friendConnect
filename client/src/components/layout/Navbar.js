@@ -15,81 +15,72 @@ class Navbar extends Component {
   };
   render() {
     const { isAuthenticated, user } = this.props.auth;
+    let handle = this.props.profile ? this.props.profile.handle : "";
 
     //IS AUNTHNENTICATED NAV LINKS
     const authLinks = (
-      <ul className="navbar-nav">
-        <li className="nav-item">
-          <Link className="nav-link" to="/feed">
-            {" "}
+      <React.Fragment>
+        <li className="user-nav__item">
+          <Link className="user-nav__link" to="/feed">
             Post Feed
           </Link>
         </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/dashboard">
-            {" "}
+        <li className="user-nav__item">
+          <Link className="user-nav__link" to="/dashboard">
             Dashboard
           </Link>
         </li>
-        <li className="nav-item dropdown">
-          <a href="#nothing" className="nav-link" onClick={this.onLogOutClick}>
+
+        <li className="user-nav__item">
+          <Link className="user-nav__link" to={`/profile/${handle}`}>
             <img
-              className="rounded-circle"
+              className="user-nav__photo"
               src={user.avatar}
               alt={user.name}
-              title={
-                "You must have gravatar connected to your email to display an image"
-              }
-              style={{ width: "25px", marginRight: "5px" }}
+              title="You must have a Gravatar connected to your email to display an image"
             />
-            Logout
-          </a>
+          </Link>
         </li>
-      </ul>
+        <li className="user-nav__item">
+          <Link className="user-nav__link" to="" onClick={this.onLogOutClick}>
+            logout
+          </Link>
+        </li>
+      </React.Fragment>
     );
 
     //NOT AUTHENTICATED NAV LINKS
     const guestLinks = (
-      <ul className="navbar-nav ml-auto">
-        <li className="nav-item">
-          <Link className="nav-link" to="/register">
-            Sign Up
+      <React.Fragment>
+        <li className="user-nav__item">
+          <Link className="user-nav__link" to="/register">
+            Sign up
           </Link>
         </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/login">
+        <li className="user-nav__item">
+          <Link className="user-nav__link" to="/login">
             Login
           </Link>
         </li>
-      </ul>
+      </React.Fragment>
     );
     return (
-      <nav className="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-        <div className="container">
-          <Link className="navbar-brand" to="/">
-            DevFriendConnet
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#mobile-nav"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
+      <nav className="header">
+        <Link className="logo" to="/">
+          DevFConnect
+        </Link>
 
-          <div className="collapse navbar-collapse" id="mobile-nav">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to="/profiles">
-                  {" "}
-                  Developers
-                </Link>
-              </li>
-            </ul>
-            {isAuthenticated ? authLinks : guestLinks}
-          </div>
-        </div>
+        <ul className="user-nav--box user-nav--call">
+          <li className="user-nav__item">
+            <Link className="user-nav__link" to="/profiles">
+              {" "}
+              Developers{" "}
+            </Link>
+          </li>
+        </ul>
+        <ul className="user-nav--box">
+          {isAuthenticated ? authLinks : guestLinks}
+        </ul>
       </nav>
     );
   }
@@ -101,7 +92,8 @@ Navbar.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  profile: state.profile.profile
 });
 
 const mapDispatchToProps = dispatch => {

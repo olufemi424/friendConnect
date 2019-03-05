@@ -1,0 +1,58 @@
+.btn {
+  &,
+  &:link,
+  &:visited {
+    text-transform: capitalize;
+    text-rendering: optimizelegibility;
+    text-decoration: none;
+    padding: 1.2rem 2rem;
+    display: inline-block;
+    border-radius: 5px;
+    transition: all 200ms;
+    position: relative;
+    font-size: 1.6rem;
+    color: inherit;
+    border: none;
+    cursor: pointer;
+  }
+
+  &--green {
+    background-color: #1b450d;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 1.7rem;
+    &:hover {
+      color: #6ec79e;
+    }
+  }
+
+  &--form {
+    background-color: #1b450d;
+    padding: 1rem 2rem;
+    color: #6ec79e;
+  }
+
+  &--back {
+    background-color: #203e1672;
+    padding: 1rem;
+    color: rgb(69, 159, 117);
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(#000, 0.2);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(#000, 0.2);
+  }
+}
