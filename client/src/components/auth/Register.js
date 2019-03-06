@@ -51,7 +51,7 @@ class Register extends Component {
     return (
       <div className="signup">
         <h1 className="login__header heading-primary--main">Sign Up</h1>
-        <p className="heading-secondary">
+        <p className="heading-secondary margin-bottom--md">
           Join and connect with other Developers for free.
         </p>
         <div className="login__form">
@@ -95,7 +95,7 @@ class Register extends Component {
               error={errors.password2}
               label="Confirm Password"
             />
-            <input type="submit" value="Sign Up" class="btn btn--green" />
+            <input type="submit" value="Sign Up" className="btn btn--green" />
           </form>
         </div>
       </div>

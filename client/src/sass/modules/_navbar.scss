@@ -13,7 +13,9 @@
   font-family: "Montserrat", sans-serif;
 }
 
-.logo {
+.logo,
+.logo:focus,
+.logo:active {
   text-decoration: none;
   text-transform: capitalize;
   font-size: 2rem;
@@ -24,9 +26,10 @@
   align-self: stretch;
   margin-right: 2rem;
   font-family: "Montserrat", sans-serif;
+  padding: 0 1rem;
 
   &:hover {
-    background-color: #222;
+    background-color: #22222220;
   }
 }
 
@@ -47,7 +50,7 @@
     }
 
     &:hover {
-      background-color: #222;
+      background-color: #22222220;
     }
   }
 
@@ -64,6 +67,7 @@
   &--call {
     margin-right: auto;
     align-self: stretch;
+    margin-left: -1rem;
   }
 
   &__photo {

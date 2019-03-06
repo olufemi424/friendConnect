@@ -3,6 +3,10 @@
     margin: 1rem;
     display: flex;
     flex-direction: column;
+
+    &-url--input {
+      margin: 0;
+    }
   }
 
   &__input {
@@ -17,6 +21,10 @@
     display: block;
     width: 100%;
     margin-left: -1rem;
+
+    &.is-invalid {
+      border: 1px red solid;
+    }
   }
 
   &__input:focus {
@@ -39,6 +47,8 @@
     margin-left: 1rem;
     margin-top: 0.7rem;
     display: block;
+    transform: translateY(-7.5rem);
+
     transition: all 300ms;
   }
 
@@ -55,7 +65,7 @@
     -o-appearance: none;
 
     display: block;
-    padding: 1.5rem 0 1.5rem 10px;
+    padding: 1.5rem 0 1.5rem 20px;
     font-size: 1.5rem;
     background: url(../img/select.png) no-repeat 97% center;
     background-color: rgba(#fff, 0.5);
@@ -78,7 +88,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: -1rem;
   }
 
   &__icon {
@@ -86,21 +95,18 @@
     width: 3rem;
     height: 3rem;
     margin-right: 2rem;
-
-    &--twitter {
-      fill: #4ab2f4;
-    }
-    &--facebook {
-      fill: #4268b2;
-    }
-    &--linkedin {
-      fill: #0177b5;
-    }
-    &--youtube {
-      fill: #ff0000;
-    }
-    &--instagram {
-      fill: #c63b88;
-    }
   }
+}
+
+.invalid-feedback {
+  color: red;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-left: 1rem;
+  display: block;
+  transition: all 300ms;
+  opacity: 1 !important;
+  visibility: unset !important;
+  transform: translateY(0) !important;
 }

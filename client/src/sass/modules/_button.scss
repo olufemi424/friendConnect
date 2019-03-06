@@ -30,13 +30,17 @@
   &--form {
     background-color: #1b450d;
     padding: 1rem 2rem;
-    color: #6ec79e;
+    color: #fff;
+
+    &:hover {
+      color: #6ec79e;
+    }
   }
 
   &--back {
-    background-color: #203e1672;
+    background-color: #1b450d;
     padding: 1rem;
-    color: rgb(69, 159, 117);
+    color: #fff !important;
   }
 
   &:hover {

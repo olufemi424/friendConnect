@@ -7,13 +7,13 @@ const TextAreaFieldGroup = ({
   placeholder,
   value,
   error,
-  info,
+  label,
   onChange
 }) => {
   return (
-    <div className="form-group">
+    <div className="form__group">
       <textarea
-        className={classnames("form-control form-control-lg", {
+        className={classnames("form__input", {
           "is-invalid": error
         })}
         placeholder={placeholder}
@@ -21,8 +21,15 @@ const TextAreaFieldGroup = ({
         value={value}
         onChange={onChange}
       />
-      {info && <small className="form-text text-muted">{info}</small>}
-      {error && <div className="invalid-feedback">{error}</div>}
+      <label
+        htmlFor="name"
+        style={{ transform: "translateY(-9.5rem)" }}
+        className={classnames("form__label", {
+          "invalid-feedback": error
+        })}
+      >
+        {error ? error : label}
+      </label>
     </div>
   );
 };

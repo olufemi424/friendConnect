@@ -43,8 +43,8 @@ class Login extends Component {
     return (
       <div className="login">
         <h1 className="login__header heading-primary--main">Log In</h1>
-        <p className="heading-secondary">
-          Sign in and start enjoy great connect.
+        <p className="heading-secondary margin-bottom--lg">
+          Sign in and start connecting.
         </p>
         <div className="login__form">
           <form onSubmit={this.hanleSubmit} className="form">

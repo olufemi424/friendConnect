@@ -11,7 +11,8 @@ class Navbar extends Component {
   onLogOutClick = e => {
     e.preventDefault();
     this.props.clearCurrentProfile();
-    this.props.logOutUser(this.props.history);
+    this.props.logOutUser();
+    this.props.history.push("/login");
   };
   render() {
     const { isAuthenticated, user } = this.props.auth;
@@ -42,7 +43,7 @@ class Navbar extends Component {
           </Link>
         </li>
         <li className="user-nav__item">
-          <Link className="user-nav__link" to="" onClick={this.onLogOutClick}>
+          <Link className="user-nav__link" to="/" onClick={this.onLogOutClick}>
             logout
           </Link>
         </li>

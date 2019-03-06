@@ -12,23 +12,21 @@ const InputGroup = ({
   pattern
 }) => {
   return (
-    <div className="input-group mb-3">
-      <div className="input-group-prepend">
-        <span className="input-group-text">
-          <i className={icon} />
-        </span>
+    <div className="form__group form__group-url--input ">
+      <div className="form__group__icon margin-top--sm">
+        <img className="form__icon" alt="icon" src={icon} />
+        <input
+          className={classnames("form__input", {
+            "is-invalid": error
+          })}
+          placeholder={placeholder}
+          name={name}
+          value={value}
+          onChange={onChange}
+          pattern={pattern}
+        />
       </div>
-      <input
-        className={classnames("form-control form-control-lg", {
-          "is-invalid": error
-        })}
-        placeholder={placeholder}
-        name={name}
-        value={value}
-        onChange={onChange}
-        pattern={pattern}
-      />
-      {error && <div className="invalid-feedback">{error}</div>}
+      {error && <div className="invalid-feedback small--text-int">{error}</div>}
     </div>
   );
 };
