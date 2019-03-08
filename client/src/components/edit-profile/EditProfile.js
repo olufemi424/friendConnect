@@ -102,7 +102,8 @@ class EditProfile extends Component {
 
   handleOnChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      errors: ""
     });
   };
 
@@ -193,8 +194,12 @@ class EditProfile extends Component {
             <Link to="">Edit Profile</Link>
           </div>
         </div>
-        <h2 className="heading-primary--main">Edit Your Profile</h2>
-        <p className="heading-secondary">Please update your profile</p>
+        <h2 className="heading-tertiary--main text-center">
+          Edit Your Profile
+        </h2>
+        <p className="heading-secondary text-center">
+          Please update your profile
+        </p>
         <small className="small--text-int">* = required field</small>
         <form onSubmit={this.handleSubmit} className="form ">
           <TextFieldGroup
@@ -284,7 +289,7 @@ class EditProfile extends Component {
           <input
             type="submit"
             value="Update Profile"
-            className="btn btn--form"
+            className="btn btn--form margin-top--lg"
           />
         </form>
       </div>

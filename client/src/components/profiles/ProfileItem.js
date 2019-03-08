@@ -7,40 +7,42 @@ class ProfileItem extends Component {
   render() {
     const { profile } = this.props;
     return (
-      <div className="card card-body bg-light mb-3">
-        <div className="row">
-          <div className="col-2">
+      <div class="main-profile">
+        <Link to={`/profile/${profile.handle}`} className="main-profile__btn">
+          View Profile
+        </Link>
+        <div class="main-profile__card">
+          <div class="main-profile__image-box">
             <img
+              class="main-profile__image"
               src={profile.user.avatar}
               alt={profile.handle}
-              className="rounded-circle"
             />
           </div>
-          <div className="col-lg-6 col-md-4 col-8">
-            <h3>{profile.user.name}</h3>
-            <p>
+
+          <div class="main-profile__info-box">
+            <h3 class="main-profile__name">{profile.user.name}</h3>
+            <p class="main-profile__title">
               {profile.status}{" "}
               {isEmpty(profile.company) ? null : (
-                <span>at {profile.company}</span>
+                <span className="main-profile__title--span">
+                  at {profile.company}
+                </span>
               )}
             </p>
-            <p>
+            <p class="main-profile__address">
               {isEmpty(profile.location) ? null : (
                 <span>{profile.location}</span>
               )}
             </p>
-
-            <Link to={`/profile/${profile.handle}`} className="btn btn-info">
-              View Profile
-            </Link>
           </div>
 
-          <div className="col-md-4 d-none d-md-block">
-            <h4>Skill Set</h4>
-            <ul className="list-group">
+          <div class="main-profile-skill">
+            <h4 class="main-profile-skill__heading">Skill Set</h4>
+            <ul class="main-profile-skill__list">
               {profile.skills.slice(0, 4).map((skill, index) => (
-                <li key={index} className="list-group-item">
-                  <i className="fa fa-check pr-1" />
+                <li key={index} class="main-profile-skill__list--item">
+                  <i class="main-profile-skill__list--item-icon" />
                   {skill}
                 </li>
               ))}

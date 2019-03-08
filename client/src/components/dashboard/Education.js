@@ -4,9 +4,14 @@ import PropTypes from "prop-types";
 import Moment from "react-moment";
 import { deleteEducation } from "../../store/actions/profileActions";
 
+// scv
+import trash from "../../img/SVG/trash.svg";
+
 class Education extends Component {
   handleClick = id => {
-    if (window.confirm("Are You Sure ?")) this.props.deleteEducation(id);
+    if (window.confirm("Are You Sure ?")) {
+      this.props.deleteEducation(id);
+    }
   };
 
   render() {
@@ -14,43 +19,41 @@ class Education extends Component {
 
     if (this.props.education) {
       education = this.props.education.map(edu => (
-        <tr key={edu._id}>
-          <td>{edu.school}</td>
-          <td>{edu.degree}</td>
-          <td>
-            <Moment format="YYYY/MM/DD">{edu.from}</Moment> -{" "}
-            {edu.to === null ? (
-              "Now"
-            ) : (
-              <Moment format="YYYY/MM/DD">{edu.to}</Moment>
-            )}
-          </td>
-          <td>
-            {" "}
-            <button
-              onClick={this.handleClick.bind(this, edu._id)}
-              className="btn btn-danger"
-            >
-              &times;
-            </button>{" "}
-          </td>
-        </tr>
+        <div className="credentials__card" key={edu._id}>
+          <ul className="credentials__card--details">
+            <li className="credentials__card--details--item">
+              <span className="credentials--span">School: </span> {edu.school}
+            </li>
+            <li className="credentials__card--details--item">
+              <span className="credentials--span">Degree: </span> {edu.degree}
+            </li>
+            <li className="credentials__card--details--item">
+              <span className="credentials--span">Years: </span>{" "}
+              <Moment format="MM/DD/YYYY">{edu.from}</Moment> -{" "}
+              {edu.to === null ? (
+                "Now"
+              ) : (
+                <Moment format="YYYY/MM/DD">{edu.to}</Moment>
+              )}
+            </li>
+          </ul>
+          <button
+            className="credentials__delete-btn"
+            onClick={this.handleClick.bind(this, edu._id)}
+          >
+            <img
+              className="credentials__icon-delete"
+              src={trash}
+              alt="delete button"
+            />
+          </button>
+        </div>
       ));
     }
     return (
-      <div>
-        <h4 className="mb-4">Education Credentials</h4>
-        <table className="table">
-          <tbody>
-            <tr>
-              <th>School</th>
-              <th>Degree</th>
-              <th>Years</th>
-              <th />
-            </tr>
-            {education}
-          </tbody>
-        </table>
+      <div className="credentials-section">
+        <h4 className="heading-tertiary">Education Credentials</h4>
+        <div className="credentials">{education}</div>
       </div>
     );
   }

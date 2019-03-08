@@ -27,6 +27,18 @@
     }
   }
 
+  &--red {
+    background-color: #f05252;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 1.7rem;
+    &:hover {
+      color: #f05252;
+      background-color: #eee;
+    }
+  }
+
   &--form {
     background-color: #1b450d;
     padding: 1rem 2rem;

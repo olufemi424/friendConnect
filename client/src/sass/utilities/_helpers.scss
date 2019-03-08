@@ -7,7 +7,11 @@
     display: block;
     font-size: 6rem;
     font-weight: 600;
-    background-image: linear-gradient(to right, green, rgb(112, 203, 112));
+    background-image: linear-gradient(
+      to right,
+      var(--color-primary-light),
+      rgb(112, 203, 112)
+    );
     -webkit-background-clip: text;
     color: transparent;
   }
@@ -17,6 +21,38 @@
   font-size: 2rem;
   font-weight: 400;
   margin: 20px 0;
+
+  &--main {
+    font-size: 3rem;
+    display: block;
+    font-weight: 800;
+    background-image: linear-gradient(
+      to right,
+      var(--color-primary-light),
+      rgb(112, 203, 112)
+    );
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
+
+.heading-tertiary {
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 20px 0;
+
+  &--main {
+    font-size: 3rem;
+    display: block;
+    font-weight: 800;
+    background-image: linear-gradient(
+      to right,
+      var(--color-primary-light),
+      rgb(112, 203, 112)
+    );
+    -webkit-background-clip: text;
+    color: transparent;
+  }
 }
 
 .small--text {
@@ -29,12 +65,22 @@
   }
 }
 
+.heading-subheading--text {
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 1.5rem 0;
+}
+
 .margin-top--sm {
   margin-top: 1rem;
 }
 
 .margin-top--md {
   margin-top: 2.5rem;
+}
+
+.margin-top--lg {
+  margin-top: 4rem;
 }
 
 .margin-bottom--sm {
@@ -46,4 +92,8 @@
 
 .margin-bottom--lg {
   margin-bottom: 4rem;
+}
+
+.text-center {
+  text-align: center;
 }

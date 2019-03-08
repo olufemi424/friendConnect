@@ -34,14 +34,17 @@ class Dashboard extends Component {
       if (Object.keys(profile).length > 0) {
         dashboardContent = (
           <div>
-            <p className="lead">
+            <p className="heading-tertiary dashboard__name--link text-center">
               Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
             </p>
             <ProfileActions />
             <Experience experience={profile.experience} />
             <Education education={profile.education} />
             <div style={{ marginBottom: "60px" }}>
-              <button onClick={this.handleDelete} className="btn btn-danger">
+              <button
+                onClick={this.handleDelete}
+                className="btn btn--red margin-top--md"
+              >
                 Delete My Account
               </button>
             </div>
@@ -51,7 +54,7 @@ class Dashboard extends Component {
         //user is logged in but has no profile
         dashboardContent = (
           <div>
-            <p className="lead">Welcome {user.name}</p>
+            <p className="heading-tertiary">Welcome John Doe</p>
             <p>You have not setup a profile, pls add some info</p>
             <Link to="/create-profile" className="btn btn-lg btn-info">
               Create Profile
@@ -63,9 +66,18 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <div className="container">
+          <div className="bread">
+            <div className="light breadcrumb">
+              <div className="breadcrumb">
+                <Link to="/profiles">Home</Link>
+                <Link to="">Dashboard</Link>
+              </div>
+            </div>
+          </div>
           <div className="row">
             <div className="col-md-12">
-              <h1 className="display-4">Dashboard</h1>
+              <h1 className="heading-tertiary--main text-center">Dashboard</h1>
+
               {dashboardContent}
             </div>
           </div>

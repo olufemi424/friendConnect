@@ -1,0 +1,40 @@
+.dashboard-menu {
+  box-sizing: border-box;
+  /* height: 47px;
+   width: 60%; */
+  background-color: var(--color-grey-dark-4);
+  display: flex;
+  justify-content: space-between;
+  border-radius: 3px;
+
+  &__link,
+  &__link:visited,
+  &__link:active {
+    font-size: 1.6rem;
+    text-decoration: none;
+    align-self: center;
+    margin: 1.5rem;
+    padding: 10px;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgb(2, 26, 2);
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &--green {
+    color: green;
+  }
+
+  &__icon {
+    height: 20px;
+    width: 20px;
+    align-self: center;
+    margin-right: 10px;
+  }
+  &__name {
+    align-self: center;
+  }
+}

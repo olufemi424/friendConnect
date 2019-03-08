@@ -21,7 +21,8 @@ class AddExperience extends Component {
 
   handleOnChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      errors: ""
     });
   };
 
@@ -63,8 +64,8 @@ class AddExperience extends Component {
             <Link to="">Add Experience</Link>
           </div>
         </div>
-        <h2 className="heading-primary--main">Add Experience</h2>
-        <p className="heading-secondary">
+        <h2 className="heading-tertiary--main text-center">Add Experience</h2>
+        <p className="heading-secondary text-center">
           Add any job or position that you have had in the past
         </p>
         <small className="small--text-int">* = required field</small>

@@ -21,7 +21,8 @@ class AddEducation extends Component {
 
   handleOnChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      errors: ""
     });
   };
 
@@ -63,8 +64,8 @@ class AddEducation extends Component {
             <Link to="">Add Education</Link>
           </div>
         </div>
-        <h2 className="heading-primary--main">Add Education</h2>
-        <p className="heading-secondary">
+        <h2 className="heading-tertiary--main text-center">Add Education</h2>
+        <p className="heading-secondary text-center">
           Let's get some information about your education.
         </p>
         <small className="small--text-int">* = required field</small>
