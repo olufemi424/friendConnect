@@ -15,22 +15,25 @@ class ProfileGithub extends Component {
     const { username } = this.props;
     const { count, sort, clientId, clientSecret } = this.state;
 
-    fetch(
-      `https://api.github.com/users/${username}/repos?per_page=${count}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`
-    )
-      .then(res => res.json())
-      .then(data => {
-        if (this.refs.myRefs) {
-          this.setState({
-            repos: data
-          });
-        }
-      })
-      .catch(err => console.log(err));
+    if (username) {
+      fetch(
+        `https://api.github.com/users/${username}/repos?per_page=${count}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`
+      )
+        .then(res => res.json())
+        .then(data => {
+          if (data) {
+            this.setState({
+              repos: data
+            });
+          }
+        })
+        .catch(err => console.log(err));
+    }
   }
 
   render() {
     const { repos } = this.state;
+
     const repoItems = repos.map(repo => (
       <div key={repo.id} className="card card-body mb-2">
         <div className="row">
@@ -42,11 +45,11 @@ class ProfileGithub extends Component {
             </h4>
             <p>
               <strong>Description: </strong>
-              {repo.description}
+              {repo.description ? repo.description : "Not Available"}
             </p>
             <p>
               <strong>Language: </strong>
-              {repo.language}
+              {repo.language ? repo.language : "Not Available"}
             </p>
           </div>
           <div className="col-md-6">

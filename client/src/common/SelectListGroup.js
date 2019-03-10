@@ -12,7 +12,9 @@ const SelectListGroup = ({ name, value, error, info, onChange, options }) => {
   return (
     <div className="form__group">
       {info && (
-        <small className="small--text-int margin-bottom--sm">{info}</small>
+        <small className=" small--text-int small--text-int--negative margin-bottom--sm">
+          {info}
+        </small>
       )}
       <select
         className={classnames("form__select", {

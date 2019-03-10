@@ -75,9 +75,9 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-const mapDispatchToProps = dispatch => ({
-  getProfileByHandle: handle => dispatch(getProfileByHandle(handle))
-});
+const mapDispatchToProps = {
+  getProfileByHandle
+};
 
 export default connect(
   mapStateToProps,

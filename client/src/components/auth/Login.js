@@ -35,7 +35,7 @@ class Login extends Component {
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value,
-      errors: ""
+      errors: {}
     });
   };
 
@@ -43,8 +43,8 @@ class Login extends Component {
     const { errors } = this.state;
     return (
       <div className="login">
-        <h1 className="login__header heading-primary--main">Log In</h1>
-        <p className="heading-secondary margin-bottom--lg">
+        <h1 className="heading-secondary--main">Log In</h1>
+        <p className="heading-secondary--sub margin-bottom--lg">
           Sign in and start connecting.
         </p>
         <div className="login__form">
@@ -70,7 +70,7 @@ class Login extends Component {
             <input
               type="submit"
               value="Log In"
-              className="btn btn--green margin-top--sm"
+              className="btn btn--form margin-top--sm"
             />
           </form>
         </div>

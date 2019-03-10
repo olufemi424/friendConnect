@@ -194,13 +194,15 @@ class EditProfile extends Component {
             <Link to="">Edit Profile</Link>
           </div>
         </div>
-        <h2 className="heading-tertiary--main text-center">
-          Edit Your Profile
-        </h2>
-        <p className="heading-secondary text-center">
-          Please update your profile
-        </p>
-        <small className="small--text-int">* = required field</small>
+        <div className="dashboard__text--box">
+          <h2 className="heading-tertiary--main text-center">
+            Edit Your Profile
+          </h2>
+          <p className="heading-tertiary--sub text-center">
+            Please update your profile
+          </p>
+          <small className="small--text-int">* = required field</small>
+        </div>
         <form onSubmit={this.handleSubmit} className="form ">
           <TextFieldGroup
             placeholder="* Profile Handle"
@@ -272,13 +274,13 @@ class EditProfile extends Component {
 
           <div className="">
             <button
+              className="btn btn-form"
               type="button"
               onClick={() => {
                 this.setState(prevState => ({
                   dispplaySocialInputs: !prevState.dispplaySocialInputs
                 }));
               }}
-              className="btn btn--form"
             >
               Update Social Network Links{" "}
               <i className="fa fa-chevron-down text-info" aria-hidden="true" />

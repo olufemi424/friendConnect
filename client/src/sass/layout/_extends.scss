@@ -1,11 +1,11 @@
 .login,
 .signup {
   max-width: 45rem;
-  margin: 6rem auto;
+  margin: 15rem auto auto auto;
   border: 1px solid #21202039;
   border-radius: 0.3rem;
   padding: 4rem;
-  background-color: rgb(227, 226, 226);
+  background-color: var(--color-grey-light-4);
 }
 
 .create-profile,
@@ -15,13 +15,17 @@
 .dashboard,
 .profiles {
   max-width: 96rem;
-  margin: 5rem auto;
+  margin: 10rem auto auto auto;
   padding: 4rem;
   border: 1px solid #21202039;
-  // background-color: rgb(255, 255, 255);
+  background-color: var(--color-grey-light-4);
 }
 
 .dashboard {
+  &__text--box {
+    margin-bottom: 3rem;
+  }
+
   &__name--link a,
   &__name--link a:active,
   &__name--link a:link {
@@ -34,4 +38,10 @@
       color: var(--color-primary-light);
     }
   }
+}
+
+.footer {
+  padding: 2rem;
+  text-align: center;
+  // background-color: var(--color-grey-light-1);
 }

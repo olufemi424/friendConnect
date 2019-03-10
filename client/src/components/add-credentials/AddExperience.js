@@ -5,6 +5,7 @@ import TextAreaFieldGroup from "../../common/TextAreaFieldGroup";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addExperience } from "../../store/actions/profileActions";
+import { clearErrors } from "../../store/actions/postActions";
 
 class AddExperience extends Component {
   state = {
@@ -21,9 +22,9 @@ class AddExperience extends Component {
 
   handleOnChange = e => {
     this.setState({
-      [e.target.name]: e.target.value,
-      errors: ""
+      [e.target.name]: e.target.value
     });
+    this.props.clearErrors();
   };
 
   handleCheck = e => {
@@ -64,11 +65,13 @@ class AddExperience extends Component {
             <Link to="">Add Experience</Link>
           </div>
         </div>
-        <h2 className="heading-tertiary--main text-center">Add Experience</h2>
-        <p className="heading-secondary text-center">
-          Add any job or position that you have had in the past
-        </p>
-        <small className="small--text-int">* = required field</small>
+        <div className="dashboard__text--box">
+          <h2 className="heading-tertiary--main text-center">Add Experience</h2>
+          <p className="heading-tertiary--sub text-center">
+            Add any job or position that you have had in the past
+          </p>
+          <small className="small--text-int">* = required field</small>
+        </div>
         <form onSubmit={this.handleSubmit}>
           <TextFieldGroup
             placeholder="* Company"
@@ -76,6 +79,7 @@ class AddExperience extends Component {
             value={this.state.company}
             onChange={this.handleOnChange}
             error={errors.company}
+            label="Company"
           />
           <TextFieldGroup
             placeholder="* Job Title"
@@ -83,6 +87,7 @@ class AddExperience extends Component {
             value={this.state.title}
             onChange={this.handleOnChange}
             error={errors.title}
+            label="Job Title"
           />
           <TextFieldGroup
             placeholder="Location"
@@ -90,6 +95,7 @@ class AddExperience extends Component {
             value={this.state.location}
             onChange={this.handleOnChange}
             error={errors.location}
+            label="Location"
           />
           <h6>From Date</h6>
           <TextFieldGroup
@@ -130,7 +136,7 @@ class AddExperience extends Component {
             value={this.state.description}
             onChange={this.handleOnChange}
             error={errors.description}
-            info="Tell us a little about the position"
+            label="Tell us a little about the position"
           />
           <input
             type="submit"
@@ -154,9 +160,10 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-const mapDispatchToProps = dispatch => ({
-  addExperience: (data, history) => dispatch(addExperience(data, history))
-});
+const mapDispatchToProps = {
+  addExperience,
+  clearErrors
+};
 
 export default connect(
   mapStateToProps,

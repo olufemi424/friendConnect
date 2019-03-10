@@ -13,25 +13,21 @@ class Landing extends Component {
   render() {
     return (
       <div className="landing">
-        <div className="dark-overlay landing-inner text-light">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">FriendConnect</h1>
-                <p className="lead">
-                  {" "}
-                  Create a profile and connect with new people.
-                </p>
-                <hr />
-                <Link to="/register" className="btn btn-lg btn-info mr-2">
-                  Sign Up
-                </Link>
-                <Link to="/login" className="btn btn-lg btn-light">
-                  Login
-                </Link>
-              </div>
-            </div>
-          </div>
+        <h1 className="heading-primary--main">DevFConnect</h1>
+        <p className="heading-primary--sub">
+          {" "}
+          Create a profile and connect with new people.
+        </p>
+        <div className="landing__link">
+          <Link to="/login" className="btn btn--login btn--animated-movinleft">
+            Login
+          </Link>
+          <Link
+            to="/register"
+            className="btn btn--signup btn--animated-movinbottom"
+          >
+            Sign Up For FREE
+          </Link>
         </div>
       </div>
     );

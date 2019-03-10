@@ -11,7 +11,7 @@ import store from "./store/store";
 
 import PrivateRoute from "../src/common/PrivateRoute";
 
-import Navbar from "./components/layout/Navbar";
+import Navbar from "./components/layout/Navbar/Navbar";
 import Footer from "./components/layout/Footer";
 // import PageNotFound from "./components/layout/PageNotFound";
 import Landing from "./components/layout/Landing";
@@ -59,8 +59,8 @@ class App extends Component {
 
             {/* <Route component={PageNotFound} /> */}
 
-            <Route exact path="/" component={Landing} />
-            <div className="container">
+            <main className="main">
+              <Route exact path="/" component={Landing} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/profiles" component={Profiles} />
@@ -96,7 +96,7 @@ class App extends Component {
                 <PrivateRoute exact path="/feed" component={Posts} />
               </Switch>
               <Route exact path="/not-found" component={NotFound} />
-            </div>
+            </main>
             <Footer />
           </div>
         </Router>

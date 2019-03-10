@@ -51,9 +51,9 @@ class Register extends Component {
     const { errors } = this.state;
     return (
       <div className="signup">
-        <h1 className="login__header heading-primary--main">Sign Up</h1>
-        <p className="heading-secondary margin-bottom--md">
-          Join and connect with other Developers for free.
+        <h1 className="heading-secondary--main">Sign Up</h1>
+        <p className="heading-secondary--sub margin-bottom--md">
+          Join and connect with other Developers.
         </p>
         <div className="login__form">
           <form noValidate onSubmit={this.handleSubmit}>
@@ -96,7 +96,11 @@ class Register extends Component {
               error={errors.password2}
               label="Confirm Password"
             />
-            <input type="submit" value="Sign Up" className="btn btn--green" />
+            <input
+              type="submit"
+              value="Sign Up For FREE"
+              className="btn btn--form"
+            />
           </form>
         </div>
       </div>

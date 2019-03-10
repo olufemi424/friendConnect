@@ -131,14 +131,19 @@ class CreateProfile extends Component {
     ];
     return (
       <div className="create-profile">
-        <Link to="/dashboard" className="btn btn--back">
-          Back
-        </Link>
-        <h2 className="heading-primary--main">Create Profile</h2>
-        <p className="heading-secondary">
-          Let's get some information to make your profile stand out
-        </p>
-        <small className="small--text-int">* = required field</small>
+        <div className="light breadcrumb--box">
+          <div className="breadcrumb">
+            <Link to="/dashboard">Dashboard</Link>
+            <Link to="">Create Profile</Link>
+          </div>
+        </div>
+        <div className="dashboard__text--box">
+          <h2 className="heading-tertiary--main text-center">Create Profile</h2>
+          <p className="heading-tertiary--sub text-center">
+            Let's get some information to make your profile stand out
+          </p>
+          <small className="small--text-int">* = required field</small>
+        </div>
         <form onSubmit={this.handleSubmit} className="form ">
           <TextFieldGroup
             placeholder="* Profile Handle"
@@ -215,7 +220,7 @@ class CreateProfile extends Component {
                   dispplaySocialInputs: !prevState.dispplaySocialInputs
                 }));
               }}
-              className="btn btn--form"
+              className="btn"
             >
               Add Social Network Links
               <i className="fa fa-chevron-down text-info" aria-hidden="true" />
@@ -226,7 +231,7 @@ class CreateProfile extends Component {
           <input
             type="submit"
             value="Create Profile"
-            className="btn btn--green margin-top--md "
+            className="btn btn--form margin-top--md "
           />
         </form>
       </div>

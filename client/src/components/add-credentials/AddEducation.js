@@ -64,11 +64,14 @@ class AddEducation extends Component {
             <Link to="">Add Education</Link>
           </div>
         </div>
-        <h2 className="heading-tertiary--main text-center">Add Education</h2>
-        <p className="heading-secondary text-center">
-          Let's get some information about your education.
-        </p>
-        <small className="small--text-int">* = required field</small>
+
+        <div className="dashboard__text--box">
+          <h2 className="heading-tertiary--main text-center">Add Education</h2>
+          <p className="heading-tertiary--sub text-center">
+            Let's get some information about your education.
+          </p>
+          <small className="small--text-int">* = required field</small>
+        </div>
         <form onSubmit={this.handleSubmit}>
           <TextFieldGroup
             placeholder="* School Name"

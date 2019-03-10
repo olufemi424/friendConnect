@@ -26,10 +26,12 @@ class Profiles extends Component {
       }
     }
     return (
-      <div class="profiles">
-        <div class="profiles__header">
-          <h1 class="heading-tertiary--main text-center">Developer Profiles</h1>
-          <p class="heading-subheading--text text-center">
+      <div className="profiles">
+        <div className="profiles__header">
+          <h1 className="heading-tertiary--main text-center">
+            Developer Profiles
+          </h1>
+          <p className="heading-subheading--text text-center">
             Browse and connect with developers
           </p>
         </div>

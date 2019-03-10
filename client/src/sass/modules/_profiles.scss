@@ -1,6 +1,6 @@
 .main-profile {
   border-radius: 5px;
-  background-color: #14671419;
+  background-color: #fff;
   position: relative;
 
   &__btn,
@@ -9,11 +9,7 @@
     position: absolute;
     top: 1rem;
     right: 1rem;
-    text-decoration: none !important;
-    color: var(--color-secondary-light);
-    border-bottom: 4px solid #ff723e;
-    padding-bottom: 0.4rem;
-    font-size: 1.2rem;
+    font-size: 1.2rem !important;
   }
 
   &__card {
@@ -24,8 +20,8 @@
   }
 
   &__image-box {
-    height: 16rem;
-    width: 16rem;
+    height: 14rem;
+    width: 14rem;
     margin-right: 40px;
     align-self: center;
   }

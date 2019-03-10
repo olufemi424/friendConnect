@@ -5,54 +5,14 @@
     text-transform: capitalize;
     text-rendering: optimizelegibility;
     text-decoration: none;
-    padding: 1.2rem 2rem;
+    padding: 1.5rem 3rem;
     display: inline-block;
-    border-radius: 5px;
+    border-radius: 0.5rem;
     transition: all 200ms;
     position: relative;
-    font-size: 1.6rem;
-    color: inherit;
+    font-size: var(--default-font-size);
     border: none;
     cursor: pointer;
-  }
-
-  &--green {
-    background-color: #1b450d;
-    color: #fff;
-    font-weight: 500;
-    letter-spacing: 1px;
-    font-size: 1.7rem;
-    &:hover {
-      color: #6ec79e;
-    }
-  }
-
-  &--red {
-    background-color: #f05252;
-    color: #fff;
-    font-weight: 500;
-    letter-spacing: 1px;
-    font-size: 1.7rem;
-    &:hover {
-      color: #f05252;
-      background-color: #eee;
-    }
-  }
-
-  &--form {
-    background-color: #1b450d;
-    padding: 1rem 2rem;
-    color: #fff;
-
-    &:hover {
-      color: #6ec79e;
-    }
-  }
-
-  &--back {
-    background-color: #1b450d;
-    padding: 1rem;
-    color: #fff !important;
   }
 
   &:hover {
@@ -65,10 +25,73 @@
     }
   }
 
-  &:active,
-  &:focus {
-    outline: none;
-    transform: translateY(-1px);
-    box-shadow: 0 0.5rem 1rem rgba(#000, 0.2);
+  &--animated-movinbottom {
+    animation: moveInBottom 400ms ease-out 750ms;
+    animation-fill-mode: backwards;
+  }
+
+  &--login {
+    background-color: var(--color-white);
+    margin-right: 4rem;
+    &::after {
+      background-color: var(--color-primary-light);
+    }
+  }
+
+  &--animated-movinleft {
+    animation: moveInLeft 400ms ease-out 750ms;
+    animation-fill-mode: backwards;
+  }
+
+  &--signup {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    &::after {
+      background-color: var(--color-secondary);
+    }
+  }
+
+  &--form {
+    background-color: var(--color-primary-dark);
+    color: #fff;
+
+    &:hover {
+      color: var(--color-primary-light);
+    }
+  }
+
+  &--red {
+    background-color: #f05252;
+    color: #fff;
+    &:hover {
+      color: #f05252;
+      background-color: #eee;
+    }
+  }
+}
+
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: var(--default-font-size);
+    color: var(--color-secondary);
+    display: inline block;
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-primary);
+    padding: 0.3rem;
+    transition: all 200ms;
+  }
+
+  &:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    box-shadow: 0 1rem 2rem rgba(#000, 0.15);
+    transform: translateY(-2px);
+    border-radius: 4px;
+  }
+
+  &:active {
+    box-shadow: 0 0.5rem 1rem rgba(#000, 0.15);
+    transform: translateY(0);
   }
 }
