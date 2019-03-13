@@ -12,6 +12,10 @@
   padding: 0 3rem;
   z-index: 1000;
 
+  -webkit-box-shadow: 0 8px 6px -6px var(--color-grey-dark-3);
+  -moz-box-shadow: 0 8px 6px -6px var(--color-grey-dark-3);
+  box-shadow: 0 8px 6px -8px var(--color-grey-dark-3);
+
   &__navigation {
     display: flex;
     height: 100%;

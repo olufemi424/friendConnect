@@ -22,18 +22,27 @@ class Education extends Component {
         <div className="credentials__card" key={edu._id}>
           <ul className="credentials__card--details">
             <li className="credentials__card--details--item">
-              <span className="credentials--span">School: </span> {edu.school}
+              <span className="credentials--span">{edu.school}</span>
             </li>
             <li className="credentials__card--details--item">
               <span className="credentials--span">Degree: </span> {edu.degree}
             </li>
             <li className="credentials__card--details--item">
               <span className="credentials--span">Years: </span>{" "}
-              <Moment format="MM/DD/YYYY">{edu.from}</Moment> -{" "}
+              <Moment format="MM-DD-YYYY">{edu.from}</Moment>
+              {" - "}
               {edu.to === null ? (
-                "Now"
+                " Till Present"
               ) : (
-                <Moment format="YYYY/MM/DD">{edu.to}</Moment>
+                <Moment format="MM-DD-YYYY">{edu.to}</Moment>
+              )}
+            </li>
+            <li className="credentials__card--details--item">
+              {edu.description === "" ? null : (
+                <span>
+                  <span className="credentials--span">Description: </span>
+                  <span>{edu.description}</span>
+                </span>
               )}
             </li>
           </ul>
@@ -52,7 +61,7 @@ class Education extends Component {
     }
     return (
       <div className="credentials-section">
-        <h4 className="heading-tertiary">Education Credentials</h4>
+        <h4 className="heading-tertiary--main">Education Credentials</h4>
         <div className="credentials">{education}</div>
       </div>
     );

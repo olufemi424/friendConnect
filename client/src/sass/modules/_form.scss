@@ -30,10 +30,10 @@
   &__input:focus {
     outline: none;
     box-shadow: 1 1rem 2rem rgba(#000, 0.1);
-    border-bottom: 3px solid rgba(255, 0, 0, 0.454);
+    // border-bottom: 3px solid rgba(255, 0, 0, 0.454);
 
     &:focus:valid {
-      border-bottom: 3px solid rgb(37, 204, 37);
+      // border-bottom: 3px solid rgb(37, 204, 37);
     }
 
     &::-webkit-input-placeholder {

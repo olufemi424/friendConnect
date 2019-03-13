@@ -27,11 +27,19 @@ class Experience extends Component {
             </li>
             <li className="credentials__card--details--item">
               <span className="credentials--span">Years: </span>{" "}
-              <Moment format="MM/DD/YYYY">{exp.from}</Moment> -{" "}
+              <Moment format="MM-DD-YYYY">{exp.from}</Moment> -{" "}
               {exp.to === null ? (
-                "Now"
+                "Till Present"
               ) : (
-                <Moment format="YYYY/MM/DD">{exp.to}</Moment>
+                <Moment format="YYYY-MM-DD">{exp.to}</Moment>
+              )}
+            </li>
+            <li className="credentials__card--details--item">
+              {exp.description === "" ? null : (
+                <span>
+                  <span className="credentials--span">Description: </span>
+                  <span>{exp.description}</span>
+                </span>
               )}
             </li>
           </ul>
@@ -50,7 +58,7 @@ class Experience extends Component {
     }
     return (
       <div className="credentials-section">
-        <h4 className="heading-tertiary">Experience Credentials</h4>
+        <h4 className="heading-tertiary--main">Experience Credentials</h4>
         <div className="credentials">{experience}</div>
       </div>
     );

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+
+import book from "../../img/SVG/book.svg";
 
 class ProfileGithub extends Component {
   state = {
@@ -11,9 +12,13 @@ class ProfileGithub extends Component {
     repos: []
   };
 
+  _isMounted = false;
+
   componentDidMount() {
     const { username } = this.props;
     const { count, sort, clientId, clientSecret } = this.state;
+
+    this._isMounted = true;
 
     if (username) {
       fetch(
@@ -22,55 +27,66 @@ class ProfileGithub extends Component {
         .then(res => res.json())
         .then(data => {
           if (data) {
-            this.setState({
-              repos: data
-            });
+            if (this._isMounted) {
+              this.setState({
+                repos: data
+              });
+            }
           }
         })
         .catch(err => console.log(err));
     }
   }
 
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   render() {
     const { repos } = this.state;
-
     const repoItems = repos.map(repo => (
-      <div key={repo.id} className="card card-body mb-2">
-        <div className="row">
-          <div className="col-md-6">
-            <h4>
-              <Link to={repo.html_url} className="text-info" target="_blank">
-                {repo.name}
-              </Link>
-            </h4>
-            <p>
-              <strong>Description: </strong>
-              {repo.description ? repo.description : "Not Available"}
-            </p>
-            <p>
-              <strong>Language: </strong>
-              {repo.language ? repo.language : "Not Available"}
-            </p>
-          </div>
-          <div className="col-md-6">
-            <span className="badge badge-info mr-1">
+      <div key={repo.id} className="repo__items margin-bottom--md">
+        <div className="github--top">
+          <h4>
+            <a
+              href={repo.html_url}
+              className="github--name"
+              rel="noopener noreferrer"
+            >
+              <img src={book} alt={book} className="github--icon" />
+              {repo.name}
+            </a>
+          </h4>
+          <div className="github__meta">
+            <span className="github__meta--item">
+              {" "}
               Stars: {repo.stargazers_count}
             </span>
-            <span className="badge badge-secondary mr-1">
+            <span className="github__meta--item">
               Watchers: {repo.watchers_count}
             </span>
-
-            <span className="badge badge-success">
+            <span className="github__meta--item">
               Forks: {repo.forks_count}
             </span>
           </div>
         </div>
+        <div className="github--bottom">
+          <p>
+            <strong>Language: </strong>
+            {repo.language ? repo.language : "Not Available"}
+          </p>
+          <p>
+            <strong>Description: </strong>{" "}
+            {repo.description ? repo.description : "Not Available"}
+          </p>
+        </div>
+        <hr className="margin-bottom--md margin-top--md" />
       </div>
     ));
     return (
-      <div ref="myRef">
-        <hr />
-        <h3 className="mb-4"> Latest GitHub Repos</h3>
+      <div className="github" ref="myRef">
+        <h3 className="heading-tertiary--main">Latest Github Repos</h3>
+        <hr className="margin-bottom--md margin-top--md" />
         {repoItems}
       </div>
     );

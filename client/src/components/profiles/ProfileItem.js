@@ -24,7 +24,7 @@ class ProfileItem extends Component {
           </div>
 
           <div className="main-profile__info-box">
-            <h3 className="main-profile__name">{profile.user.name}</h3>
+            <h3 className="heading-tertiary--main">{profile.user.name}</h3>
             <p className="main-profile__title">
               {profile.status}{" "}
               {isEmpty(profile.company) ? null : (

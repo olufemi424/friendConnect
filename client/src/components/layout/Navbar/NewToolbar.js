@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import DrawerTogglerButton from "./DrawerTogglerButton";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { withRouter } from "react-router";
 import PropTypes from "prop-types";
@@ -24,20 +24,20 @@ class NewNavbar extends Component {
     const authLinks = (
       <React.Fragment>
         <li className="toolbar__navigation__list-item">
-          <NavLink className="toolbar__navigation__link" to="/feed">
+          <Link className="toolbar__navigation__link" to="/feed">
             Post Feed
-          </NavLink>
+          </Link>
         </li>
         <li className="toolbar__navigation__list-item">
-          <NavLink className="toolbar__navigation__link" to="/dashboard">
+          <Link className="toolbar__navigation__link" to="/dashboard">
             Dashboard
-          </NavLink>
+          </Link>
         </li>
         <li className="toolbar__navigation__list-item">
-          <NavLink className="toolbar__navigation__link" to="/chatroom">
+          <Link className="toolbar__navigation__link" to="/chatroom">
             {" "}
             Chat Room
-          </NavLink>
+          </Link>
         </li>
         <li className="toolbar__navigation__list-item">
           <a
@@ -53,7 +53,7 @@ class NewNavbar extends Component {
 
     const profileAvatar = (
       <div className="toolbar__navigation__image">
-        <NavLink className="" to={`/profile/${handle}`}>
+        <Link className="" to={`/profile/${handle}`}>
           {" "}
           <img
             className="toolbar__navigation__image"
@@ -61,7 +61,7 @@ class NewNavbar extends Component {
             alt={user.name}
             title="You must have Gravatar connected to your email to display an image"
           />
-        </NavLink>
+        </Link>
       </div>
     );
 
@@ -69,14 +69,14 @@ class NewNavbar extends Component {
     const guestLinks = (
       <React.Fragment>
         <li className="toolbar__navigation__list-item">
-          <NavLink className="toolbar__navigation__link" to="/register">
+          <Link className="toolbar__navigation__link" to="/register">
             Signup
-          </NavLink>
+          </Link>
         </li>
         <li className="toolbar__navigation__list-item">
-          <NavLink className="toolbar__navigation__link" to="/login">
+          <Link className="toolbar__navigation__link" to="/login">
             Login
-          </NavLink>
+          </Link>
         </li>
       </React.Fragment>
     );
@@ -91,15 +91,15 @@ class NewNavbar extends Component {
             />
           </div>
           <div className="toolbar__logo">
-            <NavLink className="toolbar__logo--link" to="/">
+            <Link className="toolbar__logo--link" to="/">
               DevFConnect
-            </NavLink>
+            </Link>
           </div>
           <ul className="toolbar__navigation__list">
             <li className="toolbar__navigation__list-item">
-              <NavLink className="toolbar__navigation__link" to="/profiles">
+              <Link className="toolbar__navigation__link" to="/profiles">
                 Developers
-              </NavLink>
+              </Link>
             </li>
           </ul>
           <div className="toolbar__navigation-box">

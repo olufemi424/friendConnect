@@ -31,7 +31,7 @@ class Profiles extends Component {
           <h1 className="heading-tertiary--main text-center">
             Developer Profiles
           </h1>
-          <p className="heading-subheading--text text-center">
+          <p className="heading-tertiary--sub color-grey text-center">
             Browse and connect with developers
           </p>
         </div>
