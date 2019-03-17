@@ -6,6 +6,11 @@ import isEmpty from "../../store/validation/is-Empty";
 class ProfileItem extends Component {
   render() {
     const { profile } = this.props;
+    let photo;
+
+    if (profile.user.profileavatar[0]) {
+      photo = profile.user.profileavatar[0].photo;
+    }
     return (
       <div className="main-profile">
         <Link
@@ -18,7 +23,7 @@ class ProfileItem extends Component {
           <div className="main-profile__image-box">
             <img
               className="main-profile__image"
-              src={profile.user.avatar}
+              src={photo ? photo : profile.user.avatar}
               alt={profile.handle}
             />
           </div>

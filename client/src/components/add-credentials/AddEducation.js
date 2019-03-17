@@ -5,6 +5,7 @@ import TextAreaFieldGroup from "../../common/TextAreaFieldGroup";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addEducation } from "../../store/actions/profileActions";
+import { clearErrors } from "../../store/actions/postActions";
 
 class AddEducation extends Component {
   state = {
@@ -21,9 +22,9 @@ class AddEducation extends Component {
 
   handleOnChange = e => {
     this.setState({
-      [e.target.name]: e.target.value,
-      errors: ""
+      [e.target.name]: e.target.value
     });
+    this.props.clearErrors();
   };
 
   handleCheck = e => {
@@ -156,9 +157,10 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-const mapDispatchToProps = dispatch => ({
-  addEducation: (data, history) => dispatch(addEducation(data, history))
-});
+const mapDispatchToProps = {
+  addEducation,
+  clearErrors
+};
 
 export default connect(
   mapStateToProps,

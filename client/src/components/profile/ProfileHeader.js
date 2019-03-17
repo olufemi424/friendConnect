@@ -12,6 +12,11 @@ import sphere from "../../img/SVG/sphere.svg";
 class ProfileHeader extends Component {
   render() {
     const { profile } = this.props;
+    let photo;
+
+    if (profile.user.profileavatar[0]) {
+      photo = profile.user.profileavatar[0].photo;
+    }
 
     return (
       <div className="profile__header">
@@ -28,7 +33,7 @@ class ProfileHeader extends Component {
           <div className="profile-user__info">
             <img
               className="profile-user__info__image"
-              src={profile.user.avatar}
+              src={photo ? photo : profile.user.avatar}
               alt={profile.user.name}
             />
 

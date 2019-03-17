@@ -1,5 +1,5 @@
 .landing {
-  height: 95vh;
+  height: 93vh;
   background-image: linear-gradient(to bottom right, #0e3562cf, #85a3c5cd),
     url("../img/showcase.jpg");
   background-size: cover;
@@ -11,6 +11,6 @@
   align-items: center;
 
   &__link {
-    margin-top: 3rem;
+    padding-top: 3rem;
   }
 }
