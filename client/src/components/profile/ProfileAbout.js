@@ -11,34 +11,27 @@ class ProfileAbout extends Component {
 
     //SKILL LIST
     const skills = profile.skills.map((skill, index) => (
-      <div key={index} className="p-3">
-        <i className="fa fa-check">{skill}</i>
+      <div key={index} className="profile-user__info--skills--list">
+        {skill}
       </div>
     ));
     return (
-      <div className="row">
-        <div className="col-md-12">
-          <div className="card card-body bg-light mb-3">
-            <h3 className="text-center text-info">{firstName}'s Bio</h3>
-
-            <p>
-              {isEmpty(profile.bio) ? (
-                <span>{firstName} does not have a bio</span>
-              ) : (
-                <span className="lead">{profile.bio}</span>
-              )}
-            </p>
-
-            <hr />
-            <h3 className="text-center text-info">Skill Set</h3>
-            <div className="row">
-              <div className="d-flex flex-wrap justify-content-center align-items-center">
-                {skills}
-              </div>
-            </div>
-          </div>
+      <React.Fragment>
+        <div className="profile-user__info--bio">
+          <h3 className="profile-user__info--bio--title">{firstName}'s Bio</h3>
+          <p className="profile-user__info--bio--body">
+            {isEmpty(profile.bio) ? (
+              <span>{firstName} does not have a bio</span>
+            ) : (
+              <span>{profile.bio}</span>
+            )}
+          </p>
         </div>
-      </div>
+        <div className="profile-user__info--skills">
+          <h3 className="profile-user__info--skills-title">Skills</h3>
+          <div className="profile-user__info--skills-box">{skills}</div>
+        </div>
+      </React.Fragment>
     );
   }
 }

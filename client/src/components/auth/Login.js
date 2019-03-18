@@ -34,7 +34,8 @@ class Login extends Component {
 
   handleChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      errors: {}
     });
   };
 
@@ -42,34 +43,36 @@ class Login extends Component {
     const { errors } = this.state;
     return (
       <div className="login">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Log In</h1>
-              <p className="lead text-center">
-                Sign in to your DevConnector account
-              </p>
-              <form onSubmit={this.hanleSubmit}>
-                <TextFieldGroup
-                  placeholder="Email Address"
-                  name="email"
-                  type="email"
-                  value={this.state.email}
-                  onChange={this.handleChange}
-                  error={errors.email}
-                />
-                <TextFieldGroup
-                  placeholder="Password"
-                  name="password"
-                  type="password"
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                  error={errors.password}
-                />
-                <input type="submit" className="btn btn-info btn-block mt-4" />
-              </form>
-            </div>
-          </div>
+        <h1 className="heading-secondary--main">Log In</h1>
+        <p className="heading-secondary--sub margin-bottom--lg">
+          Sign in and start connecting.
+        </p>
+        <div className="login__form">
+          <form onSubmit={this.hanleSubmit} className="form">
+            <TextFieldGroup
+              placeholder="Email Address"
+              name="email"
+              type="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+              error={errors.email}
+              label="Email Address"
+            />
+            <TextFieldGroup
+              placeholder="Password"
+              name="password"
+              type="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              error={errors.password}
+              label="Password"
+            />
+            <input
+              type="submit"
+              value="Log In"
+              className="btn btn--form margin-top--sm"
+            />
+          </form>
         </div>
       </div>
     );

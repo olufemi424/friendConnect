@@ -6,41 +6,51 @@ import isEmpty from "../../store/validation/is-Empty";
 class ProfileItem extends Component {
   render() {
     const { profile } = this.props;
+    let photo;
+
+    if (profile.user.profileavatar[0]) {
+      photo = profile.user.profileavatar[0].photo;
+    }
     return (
-      <div className="card card-body bg-light mb-3">
-        <div className="row">
-          <div className="col-2">
+      <div className="main-profile">
+        <Link
+          to={`/profile/${profile.handle}`}
+          className="main-profile__btn btn-text"
+        >
+          View Profile
+        </Link>
+        <div className="main-profile__card">
+          <div className="main-profile__image-box">
             <img
-              src={profile.user.avatar}
+              className="main-profile__image"
+              src={photo ? photo : profile.user.avatar}
               alt={profile.handle}
-              className="rounded-circle"
             />
           </div>
-          <div className="col-lg-6 col-md-4 col-8">
-            <h3>{profile.user.name}</h3>
-            <p>
+
+          <div className="main-profile__info-box">
+            <h3 className="heading-tertiary--main">{profile.user.name}</h3>
+            <p className="main-profile__title">
               {profile.status}{" "}
               {isEmpty(profile.company) ? null : (
-                <span>at {profile.company}</span>
+                <span className="main-profile__title--span">
+                  at {profile.company}
+                </span>
               )}
             </p>
-            <p>
+            <p className="main-profile__address">
               {isEmpty(profile.location) ? null : (
                 <span>{profile.location}</span>
               )}
             </p>
-
-            <Link to={`/profile/${profile.handle}`} className="btn btn-info">
-              View Profile
-            </Link>
           </div>
 
-          <div className="col-md-4 d-none d-md-block">
-            <h4>Skill Set</h4>
-            <ul className="list-group">
+          <div className="main-profile-skill">
+            <h4 className="main-profile-skill__heading">Skill Set</h4>
+            <ul className="main-profile-skill__list">
               {profile.skills.slice(0, 4).map((skill, index) => (
-                <li key={index} className="list-group-item">
-                  <i className="fa fa-check pr-1" />
+                <li key={index} className="main-profile-skill__list--item">
+                  <i className="main-profile-skill__list--item-icon" />
                   {skill}
                 </li>
               ))}

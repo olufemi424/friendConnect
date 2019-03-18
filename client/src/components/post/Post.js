@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Spinner from "../../common/Spinner";
 import { getPost } from "../../store/actions/postActions";
-import PostItem from "../posts/PostItem";
-import CommentForm from "./CommentForm";
 import CommentFeed from "./CommentFeed";
+import CommentFeedPostItem from "./CommentFeedPostItem";
 
 class Post extends Component {
   componentDidMount() {
@@ -24,24 +22,12 @@ class Post extends Component {
     } else {
       postContent = (
         <div>
-          <PostItem post={post} showActions={false} />
-          <CommentForm postId={post._id} />
+          <CommentFeedPostItem post={post} showActions={false} />
           <CommentFeed postId={post._id} comments={post.comments} />
         </div>
       );
     }
-    return (
-      <div className="post">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <Link to="/feed" className="btn btn-light" />
-            </div>
-            {postContent}
-          </div>
-        </div>
-      </div>
-    );
+    return <div className="single-post">{postContent}</div>;
   }
 }
 

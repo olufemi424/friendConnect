@@ -1,0 +1,92 @@
+.breadcrumb,
+.breadcrumb a {
+  height: 33px;
+  display: inline-block;
+}
+
+.breadcrumb {
+  margin: 0 0 20px 0;
+  padding: 0;
+  border-width: 1px;
+  border-radius: 3px;
+  border: 1px solid rgb(186, 185, 185);
+  overflow: hidden;
+}
+
+.breadcrumb a {
+  text-rendering: optimizeLegibility;
+  line-height: 33px;
+  font-size: 12px;
+  font-weight: 300;
+  text-decoration: none;
+  padding: 0 10px 0 20px;
+  position: relative;
+}
+.breadcrumb a:first-child {
+  padding-left: 16px;
+}
+.breadcrumb a:last-child,
+.breadcrumb input[type="text"] {
+  padding-right: 16px;
+}
+.breadcrumb a:after,
+.breadcrumb a:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 17px solid transparent;
+  border-bottom: 17px solid transparent;
+  /* make left half the height */
+  border-left: 10px solid transparent;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  z-index: 2;
+}
+.breadcrumb a:before {
+  margin-left: 1px;
+  z-index: 1;
+}
+
+.breadcrumb a:last-child {
+  color: #fff;
+}
+
+.breadcrumb a:last-child {
+  pointer-events: none;
+  cursor: default;
+}
+.breadcrumb a:last-child:after,
+.breadcrumb a:last-child:before,
+.breadcrumb input[type="text"] {
+  border: none;
+}
+
+.light .breadcrumb {
+  border-color: #e9ebee;
+}
+.light .breadcrumb a {
+  color: #454545;
+  background-color: #e5e9e9;
+  text-shadow: 0 -1px rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 1px 2px #eee;
+}
+.light .breadcrumb a:after {
+  border-left-color: #e5e9e9;
+}
+.light .breadcrumb a:before {
+  border-left-color: #9c9e9e;
+}
+.light .breadcrumb a:hover {
+  background: #edf1f1;
+}
+.light .breadcrumb a:hover:after {
+  border-left-color: #edf1f1;
+}
+.light .breadcrumb a:last-child {
+  background-color: #d3d7d7;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}

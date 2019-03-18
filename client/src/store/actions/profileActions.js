@@ -1,4 +1,5 @@
 import axios from "axios";
+import { clearErrors } from "./postActions";
 import {
   GET_PROFILE,
   PROFILE_LOADING,
@@ -13,12 +14,12 @@ export const getCurrentProfile = () => dispatch => {
   dispatch(setProfileLoading());
   axios
     .get("/api/profile")
-    .then(res =>
+    .then(res => {
       dispatch({
         type: GET_PROFILE,
         payload: res.data
-      })
-    )
+      });
+    })
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
@@ -56,6 +57,11 @@ export const createProfile = (profileData, history) => dispatch => {
         type: GET_ERRORS,
         payload: err.response.data
       })
+    )
+    .then(() =>
+      setTimeout(() => {
+        dispatch(clearErrors());
+      }, 5000)
     );
 };
 
@@ -69,6 +75,11 @@ export const addExperience = (expData, history) => dispatch => {
         type: GET_ERRORS,
         payload: err.response.data
       })
+    )
+    .then(() =>
+      setTimeout(() => {
+        dispatch(clearErrors());
+      }, 5000)
     );
 };
 
@@ -82,6 +93,11 @@ export const addEducation = (eduData, history) => dispatch => {
         type: GET_ERRORS,
         payload: err.response.data
       })
+    )
+    .then(() =>
+      setTimeout(() => {
+        dispatch(clearErrors());
+      }, 5000)
     );
 };
 

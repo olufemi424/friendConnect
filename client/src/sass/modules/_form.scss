@@ -1,0 +1,113 @@
+.form {
+  &__group {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    &-url--input {
+      margin: 0;
+    }
+  }
+
+  &__input {
+    font-size: 1.5rem;
+    font-family: inherit;
+    color: inherit;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    background-color: rgba(#fff, 0.5);
+    border: none;
+    border-bottom: 3px solid transparent;
+    display: block;
+    width: 100%;
+    margin-left: -1rem;
+
+    &.is-invalid {
+      border: 1px red solid;
+    }
+  }
+
+  &__input:focus {
+    outline: none;
+    box-shadow: 1 1rem 2rem rgba(#000, 0.1);
+    // border-bottom: 3px solid rgba(255, 0, 0, 0.454);
+
+    &:focus:valid {
+      // border-bottom: 3px solid rgb(37, 204, 37);
+    }
+
+    &::-webkit-input-placeholder {
+      color: #777;
+    }
+  }
+
+  &__label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 1rem;
+    margin-top: 0.7rem;
+    display: block;
+    transform: translateY(-7.5rem);
+
+    transition: all 300ms;
+  }
+
+  &__input:placeholder-shown + &__label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem);
+  }
+
+  &__select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+
+    display: block;
+    padding: 1.5rem 0 1.5rem 20px;
+    font-size: 1.5rem;
+    background: url(../img/select.png) no-repeat 97% center;
+    background-color: rgba(#fff, 0.5);
+    color: inherit;
+    border-radius: 5px;
+    border: none;
+    width: 60%;
+    margin-bottom: 2.5rem;
+    margin-top: -1.3rem;
+    margin-left: -1rem;
+    font-family: inherit;
+    outline: none;
+
+    :focus,
+    :active {
+      border: none;
+    }
+  }
+
+  &__group__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__icon {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    margin-right: 2rem;
+  }
+}
+
+.invalid-feedback {
+  color: red;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-left: 1rem;
+  display: block;
+  transition: all 300ms;
+  opacity: 1 !important;
+  visibility: unset !important;
+  transform: translateY(0) !important;
+}

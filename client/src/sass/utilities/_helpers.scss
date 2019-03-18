@@ -1,0 +1,135 @@
+.heading-primary {
+  &--main {
+    display: block;
+    font-size: 7rem;
+    font-weight: 600;
+    letter-spacing: 10px;
+    color: #fff;
+
+    animation-name: moveInRight;
+    animation-duration: 2s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  &--sub {
+    display: block;
+    font-size: 3rem;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 3px;
+  }
+}
+
+.heading-secondary {
+  &--main {
+    font-size: 6rem;
+    font-weight: 400;
+    margin: 2rem 0;
+    color: var(--color-primary-dark);
+  }
+
+  &--sub {
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--color-grey-dark-2);
+  }
+}
+
+// .heading-tertiary {
+//   font-size: 2rem;
+//   font-weight: 400;
+//   margin: 20px 0;
+
+//   &--main {
+//     font-size: 3rem;
+//     display: block;
+//     font-weight: 800;
+//     background-image: linear-gradient(to right, green, rgb(112, 203, 112));
+//     -webkit-background-clip: text;
+//     color: transparent;
+//   }
+// }
+
+.heading-tertiary {
+  &--main {
+    font-weight: 400;
+    margin: 2rem 0;
+    font-size: 2rem;
+    font-weight: 600;
+    display: block;
+    background-image: linear-gradient(
+      to right,
+      var(--color-primary),
+      var(--color-primary-light)
+    );
+    -webkit-background-clip: text;
+    color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  &--sub {
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 0.7rem;
+    display: block;
+    color: var(--color-grey-light-3);
+  }
+}
+
+.small--text {
+  font-size: 1.6rem;
+  padding: 1.5rem 1rem;
+  margin-bottom: 2rem;
+
+  &-int {
+    font-size: 1.1rem;
+    margin-left: 2rem;
+    padding-bottom: 2rem;
+    color: var(--color-secondary);
+
+    &--negative {
+      margin-top: -2rem;
+    }
+  }
+}
+
+.color-secondary {
+  color: var(--color-secondary);
+  font-weight: 400;
+}
+
+.color-primary {
+  color: var(--color-primary);
+}
+
+.color-grey {
+  color: var(--color-grey-dark-1);
+}
+
+.margin-top--sm {
+  margin-top: 1rem;
+}
+
+.margin-top--md {
+  margin-top: 2.5rem;
+}
+
+.margin-top--lg {
+  margin-top: 4rem;
+}
+
+.margin-bottom--sm {
+  margin-bottom: 1rem;
+}
+.margin-bottom--md {
+  margin-bottom: 2.5rem;
+}
+
+.margin-bottom--lg {
+  margin-bottom: 4rem;
+}
+
+.text-center {
+  text-align: center;
+}

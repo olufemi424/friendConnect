@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import ProfileHeader from "./ProfileHeader";
 import ProfileAbout from "./ProfileAbout";
@@ -17,11 +17,11 @@ class Profile extends Component {
     }
   }
 
-  // componentWillReceiveProps() {
-  //   if (this.props.profile.profile === null && this.props.profile.loading) {
-  //     this.props.history.push("/not-found");
-  //   }
-  // }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.profile.profile === null && this.props.profile.loading) {
+      this.props.history.push("/not-found");
+    }
+  }
 
   render() {
     const { profile, loading } = this.props.profile;
@@ -33,15 +33,6 @@ class Profile extends Component {
     } else {
       profileContent = (
         <div>
-          <div className="row">
-            <div className="col-md-6">
-              <Link to="/profiles" className="btn btn-light mb-3 floart-left">
-                {" "}
-                Back To Profiles
-              </Link>
-            </div>
-            <div className="col-md-6" />
-          </div>
           <ProfileHeader profile={profile} />
           <ProfileAbout profile={profile} />
           <ProfileCreds
@@ -54,15 +45,7 @@ class Profile extends Component {
         </div>
       );
     }
-    return (
-      <div className="profile">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">{profileContent}</div>
-          </div>
-        </div>
-      </div>
-    );
+    return <div className="profile">{profileContent}</div>;
   }
 }
 
@@ -75,9 +58,9 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-const mapDispatchToProps = dispatch => ({
-  getProfileByHandle: handle => dispatch(getProfileByHandle(handle))
-});
+const mapDispatchToProps = {
+  getProfileByHandle
+};
 
 export default connect(
   mapStateToProps,

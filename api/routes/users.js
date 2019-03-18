@@ -3,15 +3,15 @@ const router = express.Router();
 const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const keys = require("../../config/keys");
+const keys = require("../config/keys");
 const passport = require("passport");
 
 //load input validation
-const validateRegisterInput = require("../../validation/register");
-const validateLoginInput = require("../../validation/login");
+const validateRegisterInput = require("../validation/register");
+const validateLoginInput = require("../validation/login");
 
 //load User model
-var User = require("../../models/Users");
+var User = require("../models/Users");
 
 //@route GET api/users/test
 //@des users post Route
@@ -127,7 +127,8 @@ router.get(
       id: req.user.id,
       name: req.user.name,
       avatar: req.user.avatar,
-      date: req.user.date
+      date: req.user.date,
+      profileavatar: req.user.profileavatar
     });
   }
 );

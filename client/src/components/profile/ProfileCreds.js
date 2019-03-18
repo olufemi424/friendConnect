@@ -6,88 +6,94 @@ class ProfileCreds extends Component {
   render() {
     const { experience, education } = this.props;
 
+    //LIST OF EXP AND EDU INTO VARIABLES
     const expItems = experience.map(exp => (
-      <li key={exp._id} className="list-group-item">
-        <h4>{exp.company}</h4>
-        <p>
-          <Moment format="YYYY/MM/DD">{exp.from}</Moment>
-          {exp.to === null ? (
-            " Now"
-          ) : (
-            <Moment format="YYYY/MM/DD">{exp.to}</Moment>
-          )}
-        </p>
-        <p>
-          <strong>Position: </strong> {exp.title}
-        </p>
-        <p>
-          {exp.location === "" ? null : (
-            <span>
-              <strong>Location: </strong>
-              {exp.location}
-            </span>
-          )}
-        </p>
-
-        <p>
-          {exp.description === "" ? null : (
-            <span>
-              <strong>Description: </strong>
-              {exp.description}
-            </span>
-          )}
-        </p>
-      </li>
+      <div key={exp._id} className="credentials__card">
+        <ul className="credentials__card--details">
+          <li className="credentials__card--details--item">
+            <span className="credentials--span">{exp.company} </span>
+          </li>
+          <li className="credentials__card--details--item">
+            <span className="credentials--span">Title: </span> {exp.title}
+          </li>
+          <li className="credentials__card--details--item">
+            <span className="credentials--span">Years: </span>
+            <Moment format="MM-DD-YYYY">{exp.from}</Moment>
+            {exp.to === null ? (
+              " till Present"
+            ) : (
+              <Moment format="MM-DD-YYYY">{exp.to}</Moment>
+            )}
+          </li>
+          <li className="credentials__card--details--item">
+            {exp.description === "" ? null : (
+              <span>
+                <span className="credentials--span">Description: </span>
+                <span>{exp.description}</span>
+              </span>
+            )}
+          </li>
+        </ul>
+      </div>
     ));
 
     const eduItems = education.map(edu => (
-      <li key={edu._id} className="list-group-item">
-        <h4>{edu.school}</h4>
-        <p>
-          <Moment format="YYYY/MM/DD">{edu.from}</Moment>
-          {edu.to === null ? (
-            " Now"
-          ) : (
-            <Moment format="YYYY/MM/DD">{edu.to}</Moment>
-          )}
-        </p>
-        <p>
-          <strong>Degree: </strong> {edu.degree}
-        </p>
-        <p>
-          <strong>Field Of Study: </strong> {edu.fieldOfStudy}
-        </p>
-
-        <p>
-          {edu.description === "" ? null : (
-            <span>
-              <strong>Description: </strong>
-              {edu.description}
-            </span>
-          )}
-        </p>
-      </li>
+      <div key={edu._id} className="credentials__card">
+        <ul className="credentials__card--details">
+          <li className="credentials__card--details--item">
+            <span className="credentials--span">{edu.school}</span>
+          </li>
+          <li className="credentials__card--details--item">
+            <span className="credentials--span">Degree: </span> {edu.degree}
+          </li>
+          <li className="credentials__card--details--item">
+            <span className="credentials--span">Years: </span>{" "}
+            <Moment format="MM-DD-YYYY">{edu.from}</Moment>
+            {edu.to === null ? (
+              " till Present"
+            ) : (
+              <Moment format="MM-DD-YYYY">{edu.to}</Moment>
+            )}
+          </li>
+          <li className="credentials__card--details--item">
+            {edu.description === "" ? null : (
+              <span>
+                <span className="credentials--span">Description: </span>
+                <span>{edu.description}</span>
+              </span>
+            )}
+          </li>
+        </ul>
+      </div>
     ));
 
     return (
-      <div className="row">
-        <div className="col-md-6">
-          <h3 className="text-center text-info">Experience</h3>
+      <React.Fragment>
+        {/* EDUCATION CREDS */}
+        <div className="credentials-section">
+          <h4 className="heading-tertiary--main">Education Credentials</h4>
+          <hr className="margin-bottom--md margin-top--md" />
           {expItems.length > 0 ? (
-            <ul className="list-group">{expItems}</ul>
+            <div className="credentials">{eduItems}</div>
           ) : (
             <p className="text-center">No Experience Listed</p>
           )}
         </div>
-        <div className="col-md-6">
-          <h3 className="text-center text-info">Education</h3>
+
+        <hr className="margin-bottom--md margin-top--md" />
+
+        {/* EXPERIENCE CREDS */}
+        <div className="credentials-section">
+          <h4 className="heading-tertiary--main">Experience Credentials</h4>
+          <hr className="margin-bottom--md margin-top--md" />
           {eduItems.length > 0 ? (
-            <ul className="list-group">{eduItems}</ul>
+            <div className="credentials">{expItems}</div>
           ) : (
             <p className="text-center">No Education Listed</p>
           )}
+          <hr className="margin-bottom--md margin-top--md" />
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

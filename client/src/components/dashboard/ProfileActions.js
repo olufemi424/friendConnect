@@ -1,19 +1,44 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// SVGs
+import study from "../../img/SVG/icon-study.svg";
+import userplus from "../../img/SVG/icon-user-plus.svg";
+import briefcase from "../../img/SVG/briefcase.svg";
+
 const ProfileActions = () => {
   return (
-    <div className="btn-group mb-4" role="group">
-      <Link to="edit-profile" className="btn btn-light">
-        <i className="fas fa-user-circle text-info mr-1" /> Edit Profile
+    <div className="dashboard-menu" role="group">
+      <Link to="/edit-profile" className="dashboard-menu__link">
+        <img
+          className="dashboard-menu__icon"
+          src={userplus}
+          alt="user icon plus"
+        />
+
+        <div className="dashborad-menu__name">
+          Edit <span className="dashboard-menu--green">Profile</span>
+        </div>
       </Link>
-      <Link to="add-experience" className="btn btn-light">
-        <i className="fab fa-black-tie text-info mr-1" />
-        Add Experience
+      <Link to="/add-experience" className="dashboard-menu__link">
+        <img
+          className="dashboard-menu__icon"
+          src={briefcase}
+          alt="user icon plus"
+        />
+        <div className="dashborad-menu__name">
+          Add <span className="dashboard-menu--green">Experience</span>
+        </div>
       </Link>
-      <Link to="add-education" className="btn btn-light">
-        <i className="fas fa-graduation-cap text-info mr-1" />
-        Add Education
+      <Link to="/add-education" className="dashboard-menu__link">
+        <img
+          className="dashboard-menu__icon"
+          src={study}
+          alt="user icon plus"
+        />
+        <div className="dashborad-menu__name">
+          Add <span className="dashboard-menu--green">Education</span>
+        </div>
       </Link>
     </div>
   );
