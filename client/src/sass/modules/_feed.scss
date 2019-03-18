@@ -1,0 +1,189 @@
+// feed user
+.feed {
+  max-width: 70rem;
+  margin: 15rem auto auto auto;
+
+  &-user {
+    display: flex;
+    padding: 2rem;
+    // background-color: rgba(35, 173, 194, 0.523);
+    background-color: rgba(35, 173, 194, 0.523);
+    border-radius: 5px;
+    box-shadow: var(--shadow-light);
+
+    justify-content: flex-start;
+    align-items: center;
+
+    &__photo {
+      height: 9rem;
+      width: 9rem;
+      border-radius: 40%;
+
+      &--link {
+        margin-right: 2rem;
+      }
+    }
+
+    &__input--box {
+      flex: 1;
+    }
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+      // justify-content: space-around;
+      height: 10rem;
+
+      &--comment {
+        height: auto;
+
+        flex-direction: row;
+
+        &--button {
+          font-size: 1.4rem;
+          text-transform: capitalize;
+          color: #eee;
+          border-radius: 5px;
+          padding: 2rem;
+          background-color: #1b9fe6;
+          border: none;
+        }
+
+        &__actions {
+          margin: 0;
+        }
+      }
+
+      textarea::-webkit-input-placeholder {
+        color: #0bf;
+      }
+
+      &__error {
+        color: rgba(255, 0, 0, 0.961);
+        font-size: 1.4rem;
+      }
+
+      &__input {
+        width: 100%;
+        height: 7rem;
+        border: solid 1px #1b9fe6;
+        border-radius: 5px;
+        padding: 1rem;
+        font-size: 1.7rem;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      &__button,
+      &__button:active {
+        font-size: 1.4rem;
+        text-transform: capitalize;
+        color: #eee;
+        border-radius: 5px;
+        padding: 0.3rem 1.3rem;
+        background-color: #1b9fe6;
+        border: none;
+        outline: none;
+      }
+
+      &__actions {
+        margin-top: 1rem;
+        padding-left: 2rem;
+        display: flex;
+        justify-content: space-between;
+
+        &--comment {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.post {
+  background-color: #f4f4f4;
+  margin-top: 3rem;
+  border-radius: 5px;
+  box-shadow: var(--shadow-light-1);
+
+  &--user {
+    display: flex;
+    padding: 2rem;
+    flex: 2;
+
+    &__info {
+      // padding-right: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__name {
+      color: inherit;
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      color: #0bf !important;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-left: 2rem;
+      flex: 4;
+
+      &--text {
+        font-size: 1.6rem;
+      }
+    }
+
+    &__content--action {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      &--box1 {
+        display: flex;
+      }
+    }
+
+    &__button,
+    &__button:active,
+    &__button:link {
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: none;
+
+      display: flex;
+    }
+
+    &__likes-count {
+      font-size: 1.2rem;
+      padding: 0 0.5rem;
+    }
+
+    &__comment,
+    &__comment:active,
+    &__comment:link,
+    &__comment:visited {
+      font-size: 1.6rem;
+      color: #0bf;
+      text-decoration: none;
+    }
+  }
+}
+
+// .comments {
+//   background-color: #f4f4f4;
+//   margin-top: 3rem;
+//   border-radius: 5px;
+// }
+
+.single-post {
+  max-width: 70rem;
+  margin: 15rem auto auto auto;
+}

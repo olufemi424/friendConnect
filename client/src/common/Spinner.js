@@ -8,11 +8,11 @@ export default function Spinner() {
         src={spinner}
         alt="Loding..."
         style={{
-          width: "80px",
-          height: "80px",
+          width: "50px",
+          height: "50px",
           display: "flex",
           justifyContent: "center",
-          alignItems: "center"
+          alignSelf: "center"
         }}
       />
     </div>

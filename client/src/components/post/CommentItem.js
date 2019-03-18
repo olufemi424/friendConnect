@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { deleteComment } from "../../store/actions/postActions";
 
+// SVG
+import times from "../../img/SVG/trash.svg";
+
 export class CommentItem extends Component {
   handleDeleClick = e => {
     const {
@@ -15,30 +18,32 @@ export class CommentItem extends Component {
   render() {
     const { comment, auth } = this.props;
     return (
-      <div className="card card-body mb-3">
-        <div className="row">
-          <div className="col-md-2">
-            <a href="profile.html">
-              <img
-                className="rounded-circle d-none d-md-block"
-                src={comment.avatar}
-                alt=""
-              />
+      <div className="post">
+        <div className="post--user">
+          <div className="post--user__info">
+            <a href="#!" className="post--user__link">
+              <img className="feed-user__photo" src={comment.avatar} alt="" />
             </a>
-            <br />
-            <p className="text-center">{comment.name}</p>
+            <a href="#!" className="post--user__name">
+              {comment.name}
+            </a>
           </div>
-          <div className="col-md-10">
-            <p className="lead">{comment.text}</p>
-            {comment.user === auth.user.id ? (
-              <button
-                onClick={this.handleDeleClick.bind(this)}
-                type="button"
-                className="btn btn-danger mr-1"
-              >
-                <i className="fas fa-times" />
-              </button>
-            ) : null}
+          <div className="post--user__content">
+            <p className="post--user__content--text">{comment.text}</p>
+            <div className="post--user__content--action">
+              <div className="post--user__content--action--box1" />
+              <div className="post--user__content--action--box2">
+                {comment.user === auth.user.id ? (
+                  <button
+                    onClick={this.handleDeleClick}
+                    type="button"
+                    className="post--user__button"
+                  >
+                    <img className="dashboard-menu__icon" src={times} alt="" />
+                  </button>
+                ) : null}
+              </div>
+            </div>
           </div>
         </div>
       </div>

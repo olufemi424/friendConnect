@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import classnames from "classnames";
 import { Link } from "react-router-dom";
 import {
   deletePost,
   addLike,
   removeLike
 } from "../../store/actions/postActions";
+
+// SVG
+import thumbsup from "../../img/SVG/thumbsup.svg";
+import thumbsdown from "../../img/SVG/thumbsdown.svg";
+import times from "../../img/SVG/trash.svg";
 
 class PostItem extends Component {
   handleDeleClick = e => {
@@ -37,57 +41,72 @@ class PostItem extends Component {
   render() {
     const { post, auth, showActions } = this.props;
     return (
-      <div className="card card-body mb-3">
-        <div className="row">
-          <div className="col-md-2">
-            <img
-              className="rounded-circle d-none d-md-block"
-              src={post.avatar}
-              alt=""
-            />
-            <br />
-            <p className="text-center">{post.name}</p>
+      <div className="post">
+        <div className="post--user">
+          <div className="post--user__info">
+            <a href="#!" className="post--user__link">
+              <img className="feed-user__photo" src={post.avatar} alt="" />
+            </a>
+            <a href="#!" className="post--user__name">
+              {post.name}
+            </a>
           </div>
-          <div className="col-md-10">
-            <p className="lead">{post.text}</p>
+          <div className="post--user__content">
+            <p className="post--user__content--text">{post.text}</p>
             {showActions ? (
-              <span>
-                <button
-                  onClick={this.handleLikeClick}
-                  type="button"
-                  className="btn btn-light mr-1"
-                >
-                  <i
-                    className={classnames("fas fa-thumbs-up", {
-                      "text-info": this.findUserLike(post.likes)
-                    })}
-                  />
-                  <span className="badge badge-light">{post.likes.length}</span>
-                </button>
-                <button
-                  onClick={this.handleRemoveLikeClick}
-                  type="button"
-                  className="btn btn-light mr-1"
-                >
-                  <i className="text-secondary fas fa-thumbs-down" />
-                </button>
-                <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
-                  Comments{" "}
-                  <span className="badge badge-secondary">
-                    {post.comments.length ? post.comments.length : "0"}
-                  </span>
-                </Link>
-
-                {post.user === auth.user.id ? (
+              <div className="post--user__content--action">
+                <div className="post--user__content--action--box1">
                   <button
-                    onClick={this.handleDeleClick}
+                    onClick={this.handleLikeClick}
                     type="button"
-                    className="btn btn-danger mr-1"
+                    className="post--user__button"
                   >
-                    <i className="fas fa-times" />
+                    <span className="post--user__likes-count">
+                      {post.likes.length}
+                    </span>
+                    <img
+                      className="dashboard-menu__icon"
+                      alt="thumbsup"
+                      src={thumbsup}
+                    />
                   </button>
-                ) : null}
-              </span>
+                  <button
+                    onClick={this.handleRemoveLikeClick}
+                    type="button"
+                    className="post--user__button"
+                  >
+                    <img
+                      className="dashboard-menu__icon"
+                      alt="thumbdown"
+                      src={thumbsdown}
+                    />
+                  </button>
+                  <Link
+                    to={`/post/${post._id}`}
+                    className="post--user__comment"
+                  >
+                    <span>
+                      {post.comments.length ? post.comments.length : "0"}
+                    </span>{" "}
+                    Comments
+                  </Link>
+                </div>
+                <div className="post--user__content--action--box2">
+                  {post.user === auth.user.id ? (
+                    <button
+                      onClick={this.handleDeleClick}
+                      type="button"
+                      className="post--user__button"
+                    >
+                      <img
+                        className="dashboard-menu__icon"
+                        src={times}
+                        alt=""
+                      />
+                    </button>
+                  ) : null}
+                </div>
+              </div>
             ) : null}
           </div>
         </div>
