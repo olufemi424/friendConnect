@@ -1,6 +1,10 @@
 {
   "name": "friendconnet",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.15.0",
+    "npm": "6.4.1"
+  },
   "description": "social network for friends to stay connected",
   "main": "index.js",
   "scripts": {
