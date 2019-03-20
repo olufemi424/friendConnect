@@ -5,9 +5,8 @@
 
   &-user {
     display: flex;
-    padding: 2rem;
-    // background-color: rgba(35, 173, 194, 0.523);
-    background-color: rgba(35, 173, 194, 0.523);
+    padding: 3rem 2rem;
+    background-color: var(--color-white);
     border-radius: 5px;
     box-shadow: var(--shadow-light);
 
@@ -82,7 +81,7 @@
         text-transform: capitalize;
         color: #eee;
         border-radius: 5px;
-        padding: 0.3rem 1.3rem;
+        padding: 1.5rem 2rem 3rem 2rem;
         background-color: #1b9fe6;
         border: none;
         outline: none;
@@ -103,7 +102,7 @@
 }
 
 .post {
-  background-color: #f4f4f4;
+  background-color: var(--color-white);
   margin-top: 3rem;
   border-radius: 5px;
   box-shadow: var(--shadow-light-1);

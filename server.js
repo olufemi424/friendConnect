@@ -39,7 +39,7 @@ mongoose
 app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/posts", posts);
-app.use("/api/upload", uploadsphoto);
+app.use("/api/photo", uploadsphoto);
 
 const port = process.env.port || 5000;
 //server

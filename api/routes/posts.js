@@ -52,7 +52,7 @@ router.post(
       //IF any errors, send 400 with errors
       return res.status(400).json(errors);
     }
-
+    //create new post from the post model
     const newPost = new Post({
       text: req.body.text,
       name: req.user.name,

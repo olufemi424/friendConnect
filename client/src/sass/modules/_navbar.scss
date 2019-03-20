@@ -110,7 +110,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 2.4rem;
+  height: 2.5rem;
   width: 3rem;
   background: transparent;
   border: none;
@@ -143,7 +143,11 @@
 /* SIDE DRAWER */
 .side-drawer {
   height: 100%;
-  background: #fff;
+  background-image: linear-gradient(
+    to bottom right,
+    var(--color-primary-light),
+    var(--color-primary)
+  );
   box-shadow: 1px 0px 7px #00000080;
   position: fixed;
   top: 0;
@@ -172,13 +176,12 @@
   }
 
   &__list a {
-    color: var(--color-primary);
+    color: var(--color-white);
     text-decoration: none;
     font-size: 2.8rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     font-weight: 600;
-    // background-color: var(--color-primary-light);
     padding: 0.4rem;
   }
 

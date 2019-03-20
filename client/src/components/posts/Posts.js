@@ -23,6 +23,7 @@ class Posts extends Component {
     }
     return (
       <div className="feed">
+        <h2 className="heading-tertiary--main text-center">Post Feed</h2>
         <PostForm />
         {postContent}
       </div>

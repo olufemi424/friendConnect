@@ -50,7 +50,7 @@ router.get("/", (req, res) => res.json({ msg: "Upload Works" }));
 //@des users post Route
 //@access Public
 router.post(
-  "/photo",
+  "/upload",
   upload.single("profileImage"),
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
@@ -83,29 +83,32 @@ router.post(
 //@des delete experience from profile
 //@access Private route
 router.delete(
-  "/photo/:photoId",
+  "/:photoId",
   upload.single("profileImage"),
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    // User.findOne({ _id: req.user._id })
-    //   .then(user => {
-    //delete photo from db
-    // user.profileavatar.remove(req.params.photoId);
-    // const filePath = req.file;
-    // fs.unlinkSync(filePath);
-    // save
-    // profile.save().then(user => res.json(user));
-    // res.json(user);
-    // })
-    // .catch(err => res.status(404).json(err));
+    User.findOne({ _id: req.user._id })
+      .then(user => {
+        const indexOfUserPhoto = user.profileavatar
+          .map(item => item._id.toString())
+          .indexOf(req.params.photoId);
 
-    // const fullUrl = req.protocol + "://" + req.get("host");
-    // // + req.originalUrl;
-    // console.log(fullUrl);
+        //get profile photo path
+        const photoPath = user.profileavatar[indexOfUserPhoto].photo;
+        // construct file path
+        // const filePath =
+        //   req.protocol + "://" + req.get("host") + "/" + req.params;
 
-    User.findById({ _id: req.user._id })
-      .then(user => console.log([req.params.photoId]))
-      .catch(err => console.log(err));
+        //remove from db
+        user.profileavatar.splice(indexOfUserPhoto, 1);
+
+        //remove from server upload folder
+        // fs.unlinkSync("photoPath");
+
+        //save db
+        // user.save().then(user => res.json(user));
+      })
+      .catch(err => res.status(404).json(err));
   }
 );
 
