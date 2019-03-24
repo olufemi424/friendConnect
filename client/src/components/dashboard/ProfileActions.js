@@ -9,7 +9,7 @@ import briefcase from "../../img/SVG/briefcase.svg";
 const ProfileActions = () => {
   return (
     <div className="dashboard-menu" role="group">
-      {/* <Link to="/edit-profile" className="dashboard-menu__link">
+      <Link to="/edit-profile" className="dashboard-menu__link">
         <img
           className="dashboard-menu__icon"
           src={userplus}
@@ -39,7 +39,7 @@ const ProfileActions = () => {
         <div className="dashborad-menu__name">
           Add <span className="dashboard-menu--green">Education</span>
         </div>
-      </Link> */}
+      </Link>
 
       {/* <Link to="/add-education" className="dashboard-menu__link">
         <img
