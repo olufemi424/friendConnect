@@ -38,24 +38,27 @@ class CommentForm extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <form
-        onSubmit={this.handleSubmit}
-        className="feed-user__form feed-user__form--comment"
-      >
-        <textarea
-          className="feed-user__form__input"
-          placeholder="Reply to post"
-          name="text"
-          value={this.state.text}
-          onChange={this.handleChange}
-          error={errors.text}
-        />
-        <div className="feed-user__form__actions feed-user__form__actions--comment ">
-          <button type="submit" className="feed-user__form--comment--button">
-            Comment
-          </button>
-        </div>
-      </form>
+      <div>
+        <p className="feed-user__form__error">{errors ? errors.text : null}</p>
+        <form
+          onSubmit={this.handleSubmit}
+          className="feed-user__form feed-user__form--comment"
+        >
+          <textarea
+            className="feed-user__form__input"
+            placeholder="Reply to post"
+            name="text"
+            value={this.state.text}
+            onChange={this.handleChange}
+            error={errors.text}
+          />
+          <div className="feed-user__form__actions feed-user__form__actions--comment ">
+            <button type="submit" className="feed-user__form--comment--button">
+              Comment
+            </button>
+          </div>
+        </form>
+      </div>
     );
   }
 }

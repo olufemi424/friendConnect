@@ -27,7 +27,11 @@ class Post extends Component {
         </div>
       );
     }
-    return <div className="single-post">{postContent}</div>;
+    return (
+      <div className="single-post">
+        <div className="container">{postContent}</div>
+      </div>
+    );
   }
 }
 

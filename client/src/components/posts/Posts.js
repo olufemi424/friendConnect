@@ -22,10 +22,19 @@ class Posts extends Component {
       postContent = <PostFeed posts={posts} />;
     }
     return (
-      <div className="feed">
-        <h2 className="heading-tertiary--main text-center">Post Feed</h2>
-        <PostForm />
-        {postContent}
+      <div className="container">
+        <div className="feed">
+          <div className="feed--main">
+            <h2 className="heading-secondary--main text-center">Post Feed</h2>
+            <PostForm />
+            {postContent}
+          </div>
+          <div className="feed--notification">
+            <div className="heading-secondary--sub text-center">
+              Notification
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

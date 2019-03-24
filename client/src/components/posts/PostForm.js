@@ -42,6 +42,9 @@ class PostForm extends Component {
         </a>
 
         <div className="feed-user__input--box">
+          <p className="feed-user__form__error">
+            {errors ? errors.text : null}
+          </p>
           <form className="feed-user__form" onSubmit={this.handleSubmit}>
             <textarea
               className="feed-user__form__input"
@@ -51,9 +54,6 @@ class PostForm extends Component {
               onChange={this.handleChange}
             />
             <div className="feed-user__form__actions">
-              <p className="feed-user__form__error">
-                {errors ? errors.text : null}
-              </p>
               <button type="submit" className="feed-user__form__button">
                 Post
               </button>

@@ -1,7 +1,13 @@
 // feed user
 .feed {
-  max-width: 70rem;
-  margin: 15rem auto auto auto;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-column-gap: 4rem;
+
+  h2 {
+    background-color: var(--color-white);
+    border-radius: 5px;
+  }
 
   &-user {
     display: flex;
@@ -29,9 +35,7 @@
 
     &__form {
       display: flex;
-      flex-direction: column;
-      // justify-content: space-around;
-      height: 10rem;
+      // height: 10rem;
 
       &--comment {
         height: auto;
@@ -77,14 +81,16 @@
 
       &__button,
       &__button:active {
-        font-size: 1.4rem;
-        text-transform: capitalize;
+        font-size: 1.6rem;
+        text-transform: uppercase;
         color: #eee;
         border-radius: 5px;
-        padding: 1.5rem 2rem 3rem 2rem;
+
+        padding: 2rem;
         background-color: #1b9fe6;
         border: none;
         outline: none;
+        margin: auto;
       }
 
       &__actions {
@@ -136,16 +142,16 @@
       &--text {
         font-size: 1.6rem;
       }
-    }
 
-    &__content--action {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-
-      &--box1 {
+      &--action {
         display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        &--box1 {
+          display: flex;
+        }
       }
     }
 

@@ -14,8 +14,10 @@ class ProfileHeader extends Component {
     const { profile } = this.props;
     let photo;
 
-    if (profile.user.profileavatar[0]) {
-      photo = profile.user.profileavatar[0].photo;
+    if (profile.user.profileavatar) {
+      if (profile.user.profileavatar[0]) {
+        photo = profile.user.profileavatar[0].photo;
+      }
     }
 
     return (

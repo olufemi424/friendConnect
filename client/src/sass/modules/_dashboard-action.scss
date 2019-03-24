@@ -1,11 +1,15 @@
 .dashboard-menu {
   box-sizing: border-box;
-  /* height: 47px;
-   width: 60%; */
+  // height: 47px;
+  // width: 60%;
   background-color: var(--color-grey-dark-4);
   display: flex;
   justify-content: space-between;
   border-radius: 3px;
+
+  @media only screen and (max-width: $bp-small) {
+    padding: 1rem;
+  }
 
   &__link,
   &__link:visited,
@@ -14,7 +18,7 @@
     text-decoration: none;
     align-self: center;
     margin: 1.5rem;
-    padding: 10px;
+    padding: 1rem;
     color: #777;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -22,6 +26,12 @@
     border-radius: 3px;
     display: flex;
     justify-content: center;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 50%;
+      margin: 0.2rem;
+      padding: 0.5rem;
+    }
   }
 
   &--green {

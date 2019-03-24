@@ -34,7 +34,7 @@ class Dashboard extends Component {
       if (Object.keys(profile).length > 0) {
         dashboardContent = (
           <div>
-            <p className="heading-secondary--sub dashboard__name--link text-center margin-bottom--md">
+            <p className="heading-tertiary--main dashboard__name--link text-center margin-bottom--md">
               Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
             </p>
             <ProfileActions />
@@ -54,7 +54,7 @@ class Dashboard extends Component {
         //user is logged in but has no profile
         dashboardContent = (
           <div className="dashboard__welcome">
-            <p className="heading-primary--sub dashboard__name--link text-center">
+            <p className="heading-tertiary--main dashboard__name--link text-center">
               Welcome {user.name}
             </p>
             <p className="heading-secondary--sub text-center">
@@ -80,7 +80,7 @@ class Dashboard extends Component {
           </div>
           <div className="row">
             <div className="col-md-12">
-              <h1 className="heading-tertiary--main text-center">Dashboard</h1>
+              <h1 className="heading-secondary--main text-center">Dashboard</h1>
 
               {dashboardContent}
             </div>

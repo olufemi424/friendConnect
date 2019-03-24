@@ -9,6 +9,15 @@
     animation-name: moveInRight;
     animation-duration: 2s;
     animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 5rem;
+    }
+
+    @media only screen and (max-width: $bp-smallest) {
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+    }
   }
 
   &--sub {
@@ -17,6 +26,16 @@
     font-weight: 500;
     color: #fff;
     letter-spacing: 3px;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+    }
+
+    @media only screen and (max-width: $bp-smallest) {
+      font-size: 1.5rem;
+    }
   }
 }
 
@@ -26,6 +45,11 @@
     font-weight: 400;
     margin: 2rem 0;
     color: var(--color-primary-dark);
+
+    @media only screen and (max-width: $bp-largest) {
+      font-size: 4rem;
+      margin: 0.5rem 0;
+    }
   }
 
   &--sub {

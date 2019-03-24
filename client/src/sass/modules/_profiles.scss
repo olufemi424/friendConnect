@@ -15,15 +15,29 @@
   &__card {
     padding: 2rem;
     display: flex;
-    // justify-content: space-between;
+    justify-content: space-around;
     margin-bottom: 3rem;
+    margin: 2rem 3rem;
+
+    @media only screen and (max-width: $bp-medium) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   &__image-box {
     height: 14rem;
     width: 14rem;
-    margin-right: 40px;
+    margin-right: 4rem;
     align-self: center;
+
+    @media only screen and (max-width: $bp-medium) {
+      height: 10rem;
+      width: 10rem;
+      margin-right: 0;
+      text-align: center;
+    }
   }
 
   &__image {
@@ -36,8 +50,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-right: 40px;
-    padding: 10px;
+    margin-right: 4rem;
+    padding: 1rem;
+
+    @media only screen and (max-width: $bp-medium) {
+      text-align: center;
+      margin-right: 0;
+    }
   }
 
   &__name {
@@ -60,6 +79,10 @@
     justify-content: center;
     margin-right: 40px;
     padding: 10px;
+
+    @media only screen and (max-width: $bp-medium) {
+      display: none;
+    }
 
     &__heading {
       font-size: 3rem;
@@ -88,7 +111,20 @@
 
 .profiles__header {
   background-color: var(--color-white);
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   padding: 1rem;
   border-radius: 5px;
+}
+
+.profiles__list {
+  @media only screen and (max-width: $bp-medium) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    grid-template-columns: 1fr;
+  }
 }
