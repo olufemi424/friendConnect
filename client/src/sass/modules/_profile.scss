@@ -9,17 +9,19 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-}
 
-.profile {
-  display: relative;
-  max-width: 96rem;
-  margin: 0 auto;
+  @media only screen and (max-width: $bp-medium) {
+    height: 35rem;
+  }
 }
 
 .profile-user__info {
   display: flex;
   position: relative;
+
+  @media only screen and (max-width: $bp-medium) {
+    flex-direction: column;
+  }
 
   &__image {
     border-radius: 44%;
@@ -29,6 +31,19 @@
     margin-bottom: -6.9rem;
     margin-left: 2rem;
     flex: 1;
+
+    @media only screen and (max-width: $bp-medium) {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 1rem;
+      margin-left: 4rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      width: 120px;
+      height: 120px;
+      margin: 2rem auto;
+    }
   }
 
   &__details {
@@ -44,6 +59,10 @@
       background-color: rgba(#000, 0.7);
       justify-content: space-around;
       align-items: center;
+
+      @media only screen and (max-width: $bp-small) {
+        flex-direction: column;
+      }
     }
   }
 }
@@ -56,6 +75,10 @@
   flex: 1;
   background-color: #fff;
   border-bottom: 1px solid rgb(171, 171, 171);
+
+  @media only screen and (max-width: $bp-medium) {
+    display: none;
+  }
 }
 
 .profile-user__social {
@@ -65,6 +88,10 @@
   flex: 5;
   padding-left: 4rem;
   border-bottom: 1px solid rgb(171, 171, 171);
+
+  @media only screen and (max-width: $bp-medium) {
+    padding-left: 0;
+  }
 
   display: flex;
   justify-content: space-around;

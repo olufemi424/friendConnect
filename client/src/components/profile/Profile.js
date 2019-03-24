@@ -45,7 +45,11 @@ class Profile extends Component {
         </div>
       );
     }
-    return <div className="profile">{profileContent}</div>;
+    return (
+      <div className="profile">
+        <div className="container">{profileContent}</div>
+      </div>
+    );
   }
 }
 
