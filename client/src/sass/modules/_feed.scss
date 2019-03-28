@@ -4,9 +4,24 @@
   grid-template-columns: 4fr 1fr;
   grid-column-gap: 4rem;
 
-  h2 {
+  @media only screen and (max-width: $bp-medium) {
+    grid-template-columns: 1fr;
+  }
+
+  &--notification {
+    @media only screen and (max-width: $bp-medium) {
+      display: none;
+    }
+    @media only screen and (max-width: $bp-small) {
+      display: none;
+    }
+  }
+
+  & h2 {
     background-color: var(--color-white);
     border-radius: 5px;
+    margin-bottom: 3.5rem;
+    padding: 3rem;
   }
 
   &-user {
@@ -23,6 +38,11 @@
       height: 9rem;
       width: 9rem;
       border-radius: 40%;
+
+      @media only screen and (max-width: $bp-small) {
+        height: 5rem;
+        width: 5rem;
+      }
 
       &--link {
         margin-right: 2rem;
@@ -53,6 +73,7 @@
         }
 
         &__actions {
+          padding: 0;
           margin: 0;
         }
       }
@@ -85,6 +106,7 @@
         text-transform: uppercase;
         color: #eee;
         border-radius: 5px;
+        height: 7rem;
 
         padding: 2rem;
         background-color: #1b9fe6;
@@ -94,7 +116,6 @@
       }
 
       &__actions {
-        margin-top: 1rem;
         padding-left: 2rem;
         display: flex;
         justify-content: space-between;
@@ -180,15 +201,4 @@
       text-decoration: none;
     }
   }
-}
-
-// .comments {
-//   background-color: #f4f4f4;
-//   margin-top: 3rem;
-//   border-radius: 5px;
-// }
-
-.single-post {
-  max-width: 70rem;
-  margin: 15rem auto auto auto;
 }

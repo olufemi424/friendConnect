@@ -33,12 +33,12 @@ class NewNavbar extends Component {
             Dashboard
           </Link>
         </li>
-        <li className="toolbar__navigation__list-item">
+        {/* <li className="toolbar__navigation__list-item">
           <Link className="toolbar__navigation__link" to="/chatroom">
             {" "}
             Chat Room
           </Link>
-        </li>
+        </li> */}
         <li className="toolbar__navigation__list-item">
           <a
             className="toolbar__navigation__link"

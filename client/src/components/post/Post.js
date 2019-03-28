@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Spinner from "../../common/Spinner";
 import { getPost } from "../../store/actions/postActions";
@@ -29,7 +30,15 @@ class Post extends Component {
     }
     return (
       <div className="single-post">
-        <div className="container">{postContent}</div>
+        <div className="container">
+          <div className="light breadcrumb--box">
+            <div className="breadcrumb">
+              <Link to="/feed">Feed</Link>
+              <Link to="">Post</Link>
+            </div>
+          </div>
+          {postContent}
+        </div>
       </div>
     );
   }

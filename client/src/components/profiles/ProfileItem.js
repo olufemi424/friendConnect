@@ -21,15 +21,22 @@ class ProfileItem extends Component {
         </Link>
         <div className="main-profile__card">
           <div className="main-profile__image-box">
-            <img
-              className="main-profile__image"
-              src={photo ? photo : profile.user.avatar}
-              alt={profile.handle}
-            />
+            <Link to={`/profile/${profile.handle}`}>
+              <img
+                className="main-profile__image"
+                src={photo ? photo : profile.user.avatar}
+                alt={profile.handle}
+              />
+            </Link>
           </div>
 
           <div className="main-profile__info-box">
-            <h3 className="heading-tertiary--main">{profile.user.name}</h3>
+            <Link
+              className="heading-tertiary--main"
+              to={`/profile/${profile.handle}`}
+            >
+              <h3>{profile.user.name}</h3>
+            </Link>
             <p className="main-profile__title">
               {profile.status}{" "}
               {isEmpty(profile.company) ? null : (
