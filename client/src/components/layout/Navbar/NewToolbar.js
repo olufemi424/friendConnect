@@ -14,7 +14,6 @@ class NewNavbar extends Component {
     e.preventDefault();
     this.props.clearCurrentProfile();
     this.props.logOutUser();
-    this.props.history.push("/login");
   };
   render() {
     const { isAuthenticated, user } = this.props.auth;
@@ -124,11 +123,9 @@ const mapStateToProps = state => ({
   profile: state.profile.profile
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    logOutUser: history => dispatch(logOutUser(history)),
-    clearCurrentProfile: () => dispatch(clearCurrentProfile())
-  };
+const mapDispatchToProps = {
+  logOutUser,
+  clearCurrentProfile
 };
 
 export default connect(
