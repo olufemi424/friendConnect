@@ -48,14 +48,14 @@ export const setCurrentUser = decoded => {
 
 //LOGOUT USER
 
-export const logOutUser = () => dispatch => {
+export const logOutUser = history => dispatch => {
   //REMOVE TOKEN FROM LOCAL STORAGE
   localStorage.removeItem("jwtToken");
   //REMOVE AUTH HEADER FROM FUTURE REQUEST
   setAuthToekn(false);
 
   //ROUTE TO HOME -
-  // history.push("/");
+  history.push("/login");
 
   //SET CURRENT USER TO EMPTY OBJECT IN STORE - which will set isAuthenticated to fale
   dispatch(setCurrentUser({}));

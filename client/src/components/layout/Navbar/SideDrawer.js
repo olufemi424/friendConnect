@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logOutUser } from "../../../store/actions/authActions";
@@ -9,7 +9,7 @@ class SideDrawer extends Component {
   onLogOutClick = e => {
     e.preventDefault();
     this.props.clearCurrentProfile();
-    this.props.logOutUser();
+    this.props.logOutUser(this.props.history);
   };
   render() {
     let drawerClasses = ["side-drawer"];
@@ -75,4 +75,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SideDrawer);
+)(withRouter(SideDrawer));
