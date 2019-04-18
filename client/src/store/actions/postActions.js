@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import { getProfiles } from "./profileActions";
+
 import {
   ADD_POST,
   GET_ERRORS,
@@ -33,9 +35,9 @@ export const addPost = postData => dispatch => {
 
 // GET ALL POST
 export const getPosts = (load = true) => dispatch => {
-  // if (load) {
-  //   dispatch(setPostLoading());
-  // }
+  if (load) {
+    dispatch(setPostLoading());
+  }
   axios
     .get("/api/posts")
     .then(res =>

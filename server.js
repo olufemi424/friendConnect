@@ -29,6 +29,8 @@ require("./api/config/passport")(passport);
 // DB config
 const db = require("./api/config/keys").mongoURI;
 
+console.log(process.env.NODE_ENV);
+
 //connect to mongodb
 mongoose
   .connect(db, { useNewUrlParser: true, useCreateIndex: true })
