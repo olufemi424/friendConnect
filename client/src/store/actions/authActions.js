@@ -55,7 +55,7 @@ export const logOutUser = history => dispatch => {
   setAuthToekn(false);
 
   //ROUTE TO HOME -
-  history.push("/login");
+  // history.push("/login");
 
   //SET CURRENT USER TO EMPTY OBJECT IN STORE - which will set isAuthenticated to fale
   dispatch(setCurrentUser({}));
