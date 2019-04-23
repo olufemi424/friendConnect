@@ -7,7 +7,7 @@ const passport = require("passport");
 const app = express();
 
 // bring in resources
-const users = require("./api/routes/users"); // /register && /login
+const users = require("./api/routes/users"); //register && /login
 const profile = require("./api/routes/profile");
 const posts = require("./api/routes/posts");
 const uploadsphoto = require("./api/routes/uploadphoto");

@@ -1,7 +1,6 @@
 import axios from "axios";
 
-import { getProfiles } from "./profileActions";
-
+//types
 import {
   ADD_POST,
   GET_ERRORS,

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import NewToolbar from "./NewToolbar";
+import Toolbar from "./Toolbar";
 import SideDrawer from "./SideDrawer";
 import Backdrop from "./Backdrop";
 
@@ -28,7 +28,7 @@ class Navbar extends Component {
 
     return (
       <React.Fragment>
-        <NewToolbar drawerClickHandler={this.drawerTogglerClickHandler} />
+        <Toolbar drawerClickHandler={this.drawerTogglerClickHandler} />
         <SideDrawer show={this.state.sideDrawerOpen} />
         {backdrop}
       </React.Fragment>

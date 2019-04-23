@@ -38,9 +38,14 @@ export default function(state = initialState, action) {
         loading: false
       };
     case DELETE_POST:
+      const statePost = state.posts;
+      const newStatepost = statePost.posts.filter(
+        post => post._id !== action.payload
+      );
+      console.log(newStatepost);
       return {
         ...state,
-        posts: state.posts.filter(post => post._id !== action.payload)
+        posts: newStatepost
       };
     default:
       return state;
