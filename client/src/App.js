@@ -29,62 +29,62 @@ import NotFound from "./components/not-found/NotFound";
 
 //ON LOAD OF THE APP, CHECK FOR AUTHENTICATION
 if (localStorage.jwtToken) {
-  //SET AUTH TOKEN TO HEADER AUTH
-  setAuthToken(localStorage.jwtToken);
-  //DECODE TOKEN AND GET USER INFO AND EXPIRATION
-  const decoded = jwt_decode(localStorage.jwtToken);
-  //SET USER AND isAuthenticated
-  store.dispatch(setCurrentUser(decoded));
+	//SET AUTH TOKEN TO HEADER AUTH
+	setAuthToken(localStorage.jwtToken);
+	//DECODE TOKEN AND GET USER INFO AND EXPIRATION
+	const decoded = jwt_decode(localStorage.jwtToken);
+	//SET USER AND isAuthenticated
+	store.dispatch(setCurrentUser(decoded));
 
-  //CHECK FOR EXPIRED TOKEN AND REDIRECT TO LOGIN IF EXPIRED
-  const currentTime = Date.now() / 1000;
-  if (decoded.exp < currentTime) {
-    //LOG USER OUT
-    store.dispatch(logOutUser());
-    //CLEAR CURRENT PROFILE
-    store.dispatch(clearCurrentProfile());
-    //REDIRECT TO LOGIN
-    window.location.href = "/login";
-  }
+	//CHECK FOR EXPIRED TOKEN AND REDIRECT TO LOGIN IF EXPIRED
+	const currentTime = Date.now() / 1000;
+	if (decoded.exp < currentTime) {
+		//LOG USER OUT
+		store.dispatch(logOutUser());
+		//CLEAR CURRENT PROFILE
+		store.dispatch(clearCurrentProfile());
+		//REDIRECT TO LOGIN
+		window.location.href = "/login";
+	}
 }
 
 class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Router>
-          <div className="App">
-            <Navbar />
-            <main className="main">
-              <Switch>
-                <Route path="/" exact component={Landing} />
-                <Route path="/register" component={Register} />
-                <Route path="/login" component={Login} />
-                <Route path="/profiles" component={Profiles} />
-                <Route path="/profile/:handle" component={Profile} />
-                <PrivateRoute path="/dashboard" component={Dashboard} />
-                <PrivateRoute
-                  path="/create-profile"
-                  component={CreateProfile}
-                />
-                <PrivateRoute path="/edit-profile" component={EditProfile} />
-                <PrivateRoute
-                  path="/add-experience"
-                  component={AddExperience}
-                />
-                <PrivateRoute path="/add-education" component={AddEducation} />
-                <PrivateRoute path="/post/:id" component={Post} />
-                <PrivateRoute path="/feed" component={Posts} />
-                <Route path="/not-found" component={NotFound} />
-                <Route component={PageNotFound} />
-              </Switch>
-            </main>
-            <Footer />
-          </div>
-        </Router>
-      </Provider>
-    );
-  }
+	render() {
+		return (
+			<Provider store={store}>
+				<Router basename="/">
+					<div className="App">
+						<Navbar />
+						<main className="main">
+							<Switch>
+								<Route path="/" exact component={Landing} />
+								<Route path="/register" component={Register} />
+								<Route path="/login" component={Login} />
+								<Route path="/profiles" component={Profiles} />
+								<Route path="/profile/:handle" component={Profile} />
+								<PrivateRoute path="/dashboard" component={Dashboard} />
+								<PrivateRoute
+									path="/create-profile"
+									component={CreateProfile}
+								/>
+								<PrivateRoute path="/edit-profile" component={EditProfile} />
+								<PrivateRoute
+									path="/add-experience"
+									component={AddExperience}
+								/>
+								<PrivateRoute path="/add-education" component={AddEducation} />
+								<PrivateRoute path="/post/:id" component={Post} />
+								<PrivateRoute path="/feed" component={Posts} />
+								<Route path="/not-found" component={NotFound} />
+								<Route component={PageNotFound} />
+							</Switch>
+						</main>
+						<Footer />
+					</div>
+				</Router>
+			</Provider>
+		);
+	}
 }
 
 export default App;
