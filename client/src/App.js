@@ -52,7 +52,7 @@ class App extends Component {
 	render() {
 		return (
 			<Provider store={store}>
-				<Router basename="/">
+				<Router>
 					<div className="App">
 						<Navbar />
 						<main className="main">
