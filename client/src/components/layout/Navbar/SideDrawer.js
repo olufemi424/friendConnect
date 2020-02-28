@@ -1,78 +1,76 @@
-import React, { Component } from "react";
+import React from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logOutUser } from "../../../store/actions/authActions";
 import { clearCurrentProfile } from "../../../store/actions/profileActions";
 
-class SideDrawer extends Component {
-  onLogOutClick = e => {
-    e.preventDefault();
-    this.props.clearCurrentProfile();
-    this.props.logOutUser(this.props.history);
-  };
-  render() {
-    let drawerClasses = ["side-drawer"];
+const SideDrawer = props => {
+	const onLogOutClick = e => {
+		e.preventDefault();
+		props.clearCurrentProfile();
+		props.logOutUser(props.history);
+	};
+	let drawerClasses = ["side-drawer"];
 
-    const { isAuthenticated } = this.props.auth;
+	const { isAuthenticated } = props.auth;
 
-    if (this.props.show) {
-      drawerClasses = ["side-drawer open"];
-    }
+	if (props.show) {
+		drawerClasses = ["side-drawer open"];
+	}
 
-    return (
-      <nav className={drawerClasses}>
-        <ul className="side-drawer__list">
-          <li className="side-drawer__list-item">
-            <NavLink to="/profiles">Developers</NavLink>
-          </li>
-          {isAuthenticated ? (
-            <React.Fragment>
-              <li className="side-drawer__list-item">
-                <NavLink to="/dashboard">Dashboard</NavLink>
-              </li>
-              <li className="side-drawer__list-item">
-                <NavLink to="/feed">Post Feed</NavLink>
-              </li>
-              <li className="side-drawer__list-item">
-                <NavLink to="/chatroom">Chat Room</NavLink>
-              </li>
-              <li className="side-drawer__list-item">
-                <NavLink to="" onClick={this.onLogOutClick}>
-                  Logout
-                </NavLink>
-              </li>
-            </React.Fragment>
-          ) : (
-            <React.Fragment>
-              <li className="side-drawer__list-item">
-                <NavLink to="/login">Login</NavLink>
-              </li>
-              <li className="side-drawer__list-item">
-                <NavLink to="/register">Sign Up</NavLink>
-              </li>
-            </React.Fragment>
-          )}
-        </ul>
-      </nav>
-    );
-  }
-}
+	return (
+		<nav className={drawerClasses}>
+			<ul className="side-drawer__list">
+				<li className="side-drawer__list-item">
+					<NavLink to="/profiles">Developers</NavLink>
+				</li>
+				{isAuthenticated ? (
+					<React.Fragment>
+						<li className="side-drawer__list-item">
+							<NavLink to="/dashboard">Dashboard</NavLink>
+						</li>
+						<li className="side-drawer__list-item">
+							<NavLink to="/feed">Post Feed</NavLink>
+						</li>
+						<li className="side-drawer__list-item">
+							<NavLink to="/chatroom">Chat Room</NavLink>
+						</li>
+						<li className="side-drawer__list-item">
+							<NavLink to="" onClick={onLogOutClick}>
+								Logout
+							</NavLink>
+						</li>
+					</React.Fragment>
+				) : (
+					<React.Fragment>
+						<li className="side-drawer__list-item">
+							<NavLink to="/login">Login</NavLink>
+						</li>
+						<li className="side-drawer__list-item">
+							<NavLink to="/register">Sign Up</NavLink>
+						</li>
+					</React.Fragment>
+				)}
+			</ul>
+		</nav>
+	);
+};
 
 SideDrawer.propTypes = {
-  auth: PropTypes.object.isRequired
+	auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+	auth: state.auth
 });
 
 const mapDispatchToProps = {
-  logOutUser,
-  clearCurrentProfile
+	logOutUser,
+	clearCurrentProfile
 };
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(withRouter(SideDrawer));

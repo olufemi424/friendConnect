@@ -7,69 +7,64 @@ import { deleteExperience } from "../../store/actions/profileActions";
 // svg
 import trash from "../../img/SVG/trash.svg";
 
-class Experience extends Component {
-  handleClick = id => {
-    if (window.confirm("Are You Sure ?")) this.props.deleteExperience(id);
-  };
+const Experience = props => {
+	const handleClick = id => {
+		if (window.confirm("Are You Sure ?")) props.deleteExperience(id);
+	};
 
-  render() {
-    let experience;
+	let experience;
 
-    if (this.props.experience) {
-      experience = this.props.experience.map(exp => (
-        <div className="credentials__card" key={exp._id}>
-          <ul className="credentials__card--details">
-            <li className="credentials__card--details--item">
-              <span className="credentials--span">Company: </span> {exp.company}
-            </li>
-            <li className="credentials__card--details--item">
-              <span className="credentials--span">Title: </span> {exp.title}
-            </li>
-            <li className="credentials__card--details--item">
-              <span className="credentials--span">Years: </span>{" "}
-              <Moment format="MM-DD-YYYY">{exp.from}</Moment> -{" "}
-              {exp.to === null ? (
-                "Till Present"
-              ) : (
-                <Moment format="YYYY-MM-DD">{exp.to}</Moment>
-              )}
-            </li>
-            <li className="credentials__card--details--item">
-              {exp.description === "" ? null : (
-                <span>
-                  <span className="credentials--span">Description: </span>
-                  <span>{exp.description}</span>
-                </span>
-              )}
-            </li>
-          </ul>
-          <button
-            className="credentials__delete-btn"
-            onClick={this.handleClick.bind(this, exp._id)}
-          >
-            <img
-              className="credentials__icon-delete"
-              src={trash}
-              alt="delete button"
-            />
-          </button>
-        </div>
-      ));
-    }
-    return (
-      <div className="credentials-section">
-        <h4 className="heading-tertiary--main">Experience Credentials</h4>
-        <div className="credentials">{experience}</div>
-      </div>
-    );
-  }
-}
-
-Experience.protoType = {
-  deleteEducation: PropTypes.func.isRequired
+	if (props.experience) {
+		experience = props.experience.map(exp => (
+			<div className="credentials__card" key={exp._id}>
+				<ul className="credentials__card--details">
+					<li className="credentials__card--details--item">
+						<span className="credentials--span">Company: </span> {exp.company}
+					</li>
+					<li className="credentials__card--details--item">
+						<span className="credentials--span">Title: </span> {exp.title}
+					</li>
+					<li className="credentials__card--details--item">
+						<span className="credentials--span">Years: </span>{" "}
+						<Moment format="MM-DD-YYYY">{exp.from}</Moment> -{" "}
+						{exp.to === null ? (
+							"Till Present"
+						) : (
+							<Moment format="YYYY-MM-DD">{exp.to}</Moment>
+						)}
+					</li>
+					<li className="credentials__card--details--item">
+						{exp.description === "" ? null : (
+							<span>
+								<span className="credentials--span">Description: </span>
+								<span>{exp.description}</span>
+							</span>
+						)}
+					</li>
+				</ul>
+				<button
+					className="credentials__delete-btn"
+					onClick={handleClick.bind(this, exp._id)}
+				>
+					<img
+						className="credentials__icon-delete"
+						src={trash}
+						alt="delete button"
+					/>
+				</button>
+			</div>
+		));
+	}
+	return (
+		<div className="credentials-section">
+			<h4 className="heading-tertiary--main">Experience Credentials</h4>
+			<div className="credentials">{experience}</div>
+		</div>
+	);
 };
 
-export default connect(
-  null,
-  { deleteExperience }
-)(Experience);
+Experience.protoType = {
+	deleteEducation: PropTypes.func.isRequired
+};
+
+export default connect(null, { deleteExperience })(Experience);

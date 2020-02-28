@@ -1,39 +1,33 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
 import Toolbar from "./Toolbar";
 import SideDrawer from "./SideDrawer";
 import Backdrop from "./Backdrop";
 
-class Navbar extends Component {
-  state = {
-    sideDrawerOpen: false
-  };
+const Navbar = props => {
+	const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
 
-  drawerTogglerClickHandler = () => {
-    this.setState(prevState => {
-      return { sideDrawerOpen: !prevState.sideDrawerOpen };
-    });
-  };
+	const drawerTogglerClickHandler = () => {
+		setSideDrawerOpen(!sideDrawerOpen);
+	};
 
-  backdropClickHandler = () => {
-    this.setState({ sideDrawerOpen: false });
-  };
+	const backdropClickHandler = () => {
+		setSideDrawerOpen(false);
+	};
 
-  render() {
-    let backdrop;
+	let backdrop;
 
-    if (this.state.sideDrawerOpen) {
-      backdrop = <Backdrop click={this.backdropClickHandler} />;
-    }
+	if (sideDrawerOpen) {
+		backdrop = <Backdrop click={backdropClickHandler} />;
+	}
 
-    return (
-      <React.Fragment>
-        <Toolbar drawerClickHandler={this.drawerTogglerClickHandler} />
-        <SideDrawer show={this.state.sideDrawerOpen} />
-        {backdrop}
-      </React.Fragment>
-    );
-  }
-}
+	return (
+		<React.Fragment>
+			<Toolbar drawerClickHandler={drawerTogglerClickHandler} />
+			<SideDrawer show={sideDrawerOpen} />
+			{backdrop}
+		</React.Fragment>
+	);
+};
 
 export default Navbar;
